@@ -579,6 +579,9 @@
 .main-menu > li.active-menu > a {
     color: #6c7ae0;
 }
+.right-top-bar > li.active-menu > a {
+    color: #6c7ae0;
+}
 
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -3704,4 +3707,7 @@ input.num-product::-webkit-inner-spin-button {
 .zmdi-account, .zmdi-check {
     margin-right: 10px;
     font-size: 20px;
+}
+div.right-top-bar:active > a.active-menu-top{
+    color: #6c7ae0;
 }
