@@ -2719,9 +2719,9 @@ Version:1.0
 	height: 45px;
 	padding: 10px 20px;
 	background: #fff;
-	border: 1px solid #ddd;
+	border: 1px solid #fff;
 	resize: none;
-	border-radius: 0;
+	border-radius: 2px;
 	color: #333;
 }
 .shop.single .form .form-group button {
@@ -3177,9 +3177,9 @@ Version:1.0
 	line-height: 50px;
 	padding: 0 20px;
 	border-radius: 3px;
-	border-radius: 0px;
 	color: #333 !important;
 	border: none;
+	border: 1px solid #333;
 	background: #F6F7FB;
 }
 .shop.checkout .form .form-group input:hover{
