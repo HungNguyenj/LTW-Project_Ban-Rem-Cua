@@ -21,17 +21,30 @@ input[type=number] {
 }
 
 header {
-    height: 100px;
-    background-color: #f39936;
-}
-footer {
-    height: 50px;
+    height: 110px;
     background-color: #f39936;
 }
 
+
+footer {
+    height: fit-content;
+    background-color: #222222;
+    color: white;
+    padding-bottom: 20px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
 .page-container {
-    width: 1200px;
-    margin: 20px auto;
+    width: 1100px;
+    margin: 0px auto;
 }
 
 .product-header {
@@ -155,4 +168,121 @@ footer {
 }
 .add-to-cart_button {
     margin-right: 10px;
+}
+
+.logo img{
+    width: 120px;
+    margin-top: 16px;
+}
+.sub-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 24px;
+}
+
+.right-header {
+    display: flex;
+}
+
+.right-header .single-icon {
+    margin-left: 26px;
+    font-size: 22px;
+    color: #333;
+}
+.right-header .single-icon:hover {
+    color: #e07809;
+}
+
+.product-describe {
+    margin-top: 50px;
+}
+.navbar {
+    z-index: 100;
+    background-color: #333;
+    height: 64px;
+    position: sticky;
+    top: 0;
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+.navbar li {
+    list-style-type: none;
+    width: fit-content;
+    margin: 0 4px;
+    padding: 0 18px;
+    min-height: 100%;
+}
+
+.navbar li:hover {
+    background-color: #e07809;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0 22px;
+    height: 64px;
+}
+
+
+.inner-footer {
+    display: flex;
+    padding-top: 80px;
+    justify-content: space-around;
+    font-size: 16px;
+    padding-bottom: 50px;
+}
+
+.inner-footer h4 {
+    font-size: 18px;
+}
+
+.single-footer {
+    line-height: 30px;
+    width: 200px;
+}
+
+.single-footer ul {
+    padding: 0;
+}
+
+.single-footer-left {
+    width: 400px;
+    margin-right: 60px;
+}
+.single-footer-left p a {
+    display: block;
+    color: #f7941d;
+    font-size: 22px;
+    font-weight: 500;
+}
+.single-footer a:hover {
+    color: #f7941d;
+}
+
+.ft-li:hover {
+
+    margin-left: 4px;
+}
+
+.ft-social {
+    display: flex;
+}
+
+.ft-social li{
+    color: white;
+    margin-right: 30px;
+}
+
+.ft-slash {
+    height: 1px;
+    background-color: #626262;
 }
