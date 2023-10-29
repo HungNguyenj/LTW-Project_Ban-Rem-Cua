@@ -2532,7 +2532,6 @@ Version:1.0
 }
 /* Product Tab */
 .shop.single .product-info {
-	margin-top: 50px;
 }
 .shop.single .nav-tabs {
 	border:none;
@@ -4896,10 +4895,7 @@ Version:1.0
 	border-top:1px solid #eeeeee3d;
 	padding:20px 0;
 }
-.footer .copyright .left{}
-.footer .copyright .right{
-	float:right;
-}
+
 .footer .copyright p{
 	color:#fff;
 }
