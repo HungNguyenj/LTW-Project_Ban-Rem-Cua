@@ -8,7 +8,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-    <title>Eshop - eCommerce HTML5 Template.</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="images/favicon.png">
 	<!-- Web Font -->
@@ -69,8 +68,6 @@
 						<div class="col-lg-4 col-md-12 col-12">
 							<!-- Top Left -->
 							<div class="top-left">
-								<ul class="list-main">
-								</ul>
 							</div>
 							<!--/ End Top Left -->
 						</div>
@@ -78,8 +75,8 @@
 							<!-- Top Right -->
 							<div class="right-content">
 								<ul class="list-main">
-									<li><i class="ti-user"></i> <a href="#">My account</a></li>
-									<li><i class="ti-power-off"></i><a href="login.html">Login</a></li>
+									<li><i class="ti-user"></i> <a href="user.html">Tài khoản</a></li>
+									<li><i class="ti-power-off"></i><a href="login.html">Đăng Nhập</a></li>
 								</ul>
 							</div>
 							<!-- End Top Right -->
@@ -94,7 +91,7 @@
 						<div class="col-lg-2 col-md-2 col-12">
 							<!-- Logo -->
 							<div class="logo">
-								<a href="index.html"><img src="images/logo/logo_black.jpg" style="margin-top: -10px" alt="logo"></a>
+								<a href="index.html"><img src="images/logo/logo_black.jpg" alt="logo"></a>
 							</div>
 							<!--/ End Logo -->
 							<!-- Search Form -->
@@ -103,7 +100,7 @@
 								<!-- Search Form -->
 								<div class="search-top">
 									<form class="search-form">
-										<input type="text" placeholder="Search here..." name="search">
+										<input type="text" placeholder="Tìm kiếm..." name="search">
 										<button value="search" type="submit"><i class="ti-search"></i></button>
 									</form>
 								</div>
@@ -116,13 +113,18 @@
 							<div class="search-bar-top">
 								<div class="search-bar">
 									<select>
-										<option selected="selected">All Category</option>
-										<option>xxx</option>
-										<option>xxx</option>
-										<option>xxxx</option>
+										<option selected="selected" >Danh Mục</option>
+										<option>Rèm Vải</option>
+										<option>Rèm Cuốn</option>
+										<option>Rèm Sáo Gỗ</option>
+										<option>Rèm Kiểu Âu</option>
+										<option>Rèm Tre/Trúc</option>
+										<option>Rèm Phòng Tắm</option>
+										<option>Rèm Sợi</option>
+										<option>Rèm Roman</option>
 									</select>
 									<form>
-										<input name="search" placeholder="Search Products Here....." type="search">
+										<input name="search" placeholder="Tìm kiếm ở đây....." type="search">
 										<button class="btnn"><i class="ti-search"></i></button>
 									</form>
 								</div>
@@ -134,39 +136,36 @@
 								<div class="sinlge-bar">
 									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 								</div>
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-								</div>
 								<div class="sinlge-bar shopping">
-									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+									<a href="cart.html" class="single-icon"><i class="ti-bag"></i></a>
 									<!-- Shopping Item -->
-									<div class="shopping-item">
-										<div class="dropdown-cart-header">
-											<span>2 Items</span>
-											<a href="#">View Cart</a>
-										</div>
-										<ul class="shopping-list">
-											<li>
-												<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-												<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="#">Woman Ring</a></h4>
-												<p class="quantity">1x - <span class="amount">$99.00</span></p>
-											</li>
-											<li>
-												<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-												<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="#">Woman Necklace</a></h4>
-												<p class="quantity">1x - <span class="amount">$35.00</span></p>
-											</li>
-										</ul>
-										<div class="bottom">
-											<div class="total">
-												<span>Total</span>
-												<span class="total-amount">$134.00</span>
-											</div>
-											<a href="checkout.html" class="btn animate">Checkout</a>
-										</div>
-									</div>
+									<!--							<div class="shopping-item">-->
+									<!--								<div class="dropdown-cart-header">-->
+									<!--									<span>2 Items</span>-->
+									<!--									<a href="#">View Cart</a>-->
+									<!--								</div>-->
+									<!--								<ul class="shopping-list">-->
+									<!--									<li>-->
+									<!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
+									<!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
+									<!--										<h4><a href="#">Woman Ring</a></h4>-->
+									<!--										<p class="quantity">1x - <span class="amount">$99.00</span></p>-->
+									<!--									</li>-->
+									<!--									<li>-->
+									<!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
+									<!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
+									<!--										<h4><a href="#">Woman Necklace</a></h4>-->
+									<!--										<p class="quantity">1x - <span class="amount">$35.00</span></p>-->
+									<!--									</li>-->
+									<!--								</ul>-->
+									<!--								<div class="bottom">-->
+									<!--									<div class="total">-->
+									<!--										<span>Total</span>-->
+									<!--										<span class="total-amount">$134.00</span>-->
+									<!--									</div>-->
+									<!--									<a href="checkout.html" class="btn animate">Checkout</a>-->
+									<!--								</div>-->
+									<!--							</div>-->
 									<!--/ End Shopping Item -->
 								</div>
 							</div>
@@ -184,13 +183,27 @@
 									<!-- Main Menu -->
 									<nav class="navbar navbar-expand-lg">
 										<div class="navbar-collapse">	
-											<div class="nav-inner">	
+											<div class="nav-inner">
 												<ul class="nav main-menu menu navbar-nav">
-													<li ><a href="index.html">Home</a></li>
-													<li class="active"><a href="shop-grid.html">Product</a></li>
-													<li ><a href="cart.html">Cart</a></li>
-													<li><a href="checkout.html">Check Out</a></li>
-													<li><a href="contact.html">Contact Us</a></li>
+													<li ><a href="index.html">Trang Chủ</a></li>
+													<li class="active"><a href="shop-grid.html">Sản Phẩm<i class="ti-angle-down"></i></a>
+														<ul class="dropdown">
+															<li><a href="shop-grid.html">Rèm Vải</a></li>
+															<li><a href="shop-grid.html">Rèm Cuốn</a></li>
+															<li><a href="shop-grid.html">Rèm Sáo Gỗ</a></li>
+															<li><a href="shop-grid.html">Rèm Văn Phòng</a></li>
+															<li><a href="shop-grid.html">Rèm Kiểu Âu</a></li>
+															<li><a href="shop-grid.html">Rèm Tre/Trúc</a></li>
+															<li><a href="shop-grid.html">Rèm Phòng Tắm</a></li>
+															<li><a href="shop-grid.html">Rèm Vải</a></li>
+															<li><a href="shop-grid.html">Rèm Roman</a></li>
+														</ul>
+													</li>
+													<li ><a href="blog-single-sidebar.html">Tin Tức</a></li>
+													<li ><a href="blog-index.html">Giới Thiệu</a></li>
+													<li ><a href="cart.html">Giỏ Hàng</a></li>
+													<li><a href="checkout.html">Thanh Toán</a></li>
+													<li><a href="contact.html">Liên Hệ</a></li>
 												</ul>
 											</div>
 										</div>
@@ -213,8 +226,8 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="blog-single.html">Shop Grid</a></li>
+								<li><a href="index.html">Trang Chủ<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="#">Sản Phẩm</a></li>
 							</ul>
 						</div>
 					</div>
@@ -231,27 +244,29 @@
 						<div class="shop-sidebar">
 								<!-- Single Widget -->
 								<div class="single-widget category">
-									<h3 class="title">Categories</h3>
+									<h3 class="title">Danh Mục Sản Phẩm</h3>
 									<ul class="categor-list">
-										<li><a href="#">T-shirts</a></li>
-										<li><a href="#">jacket</a></li>
-										<li><a href="#">jeans</a></li>
-										<li><a href="#">sweatshirts</a></li>
-										<li><a href="#">trousers</a></li>
-										<li><a href="#">kitwears</a></li>
-										<li><a href="#">accessories</a></li>
+										<li><a href="#">Rèm Vải</a></li>
+										<li><a href="#">Rèm Cuốn</a></li>
+										<li><a href="#">Rèm Sáo Gỗ</a></li>
+										<li><a href="#">Rèm Băn Phòng</a></li>
+										<li><a href="#">Rèm Kiểu Âu</a></li>
+										<li><a href="#">Rèm Tre/Trúc</a></li>
+										<li><a href="#">Rèm Phòng Tắm</a></li>
+										<li><a href="#">Rèm Sợi</a></li>
+										<li><a href="#">Rèm Roman</a></li>
 									</ul>
 								</div>
 								<!--/ End Single Widget -->
 								<!-- Shop By Price -->
 									<div class="single-widget range">
-										<h3 class="title">Shop by Price</h3>
+										<h3 class="title">Khoảng Giá</h3>
 										<div class="price-filter">
 											<div class="price-filter-inner">
 												<div id="slider-range"></div>
 													<div class="price_slider_amount">
 													<div class="label-input">
-														<span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price"/>
+														<span>Phạm Vi:</span><input type="text" id="amount" name="price" placeholder="Thêm giá của bạn"/>
 													</div>
 												</div>
 											</div>
@@ -269,77 +284,6 @@
 										</ul>
 									</div>
 									<!--/ End Shop By Price -->
-								<!-- Single Widget -->
-								<div class="single-widget recent-post">
-									<h3 class="title">Recent post</h3>
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Girls Dress</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Women Clothings</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Man Tshirt</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-								</div>
-								<!--/ End Single Widget -->
-								<!-- Single Widget -->
-								<div class="single-widget category">
-									<h3 class="title">Manufacturers</h3>
-									<ul class="categor-list">
-										<li><a href="#">Forever</a></li>
-										<li><a href="#">giordano</a></li>
-										<li><a href="#">abercrombie</a></li>
-										<li><a href="#">ecko united</a></li>
-										<li><a href="#">zara</a></li>
-									</ul>
-								</div>
-								<!--/ End Single Widget -->
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-8 col-12">
@@ -349,26 +293,26 @@
 								<div class="shop-top">
 									<div class="shop-shorter">
 										<div class="single-shorter">
-											<label>Show :</label>
+											<label>Hiển Thị :</label>
 											<select>
 												<option selected="selected">09</option>
 												<option>15</option>
-												<option>25</option>
-												<option>30</option>
 											</select>
 										</div>
 										<div class="single-shorter">
-											<label>Sort By :</label>
+											<label>Lọc Theo :</label>
 											<select>
-												<option selected="selected">Name</option>
-												<option>Price</option>
-												<option>Size</option>
+												<option selected="selected">Tên</option>
+												<option>Giá</option>
+												<option>Mẫu Mã</option>
 											</select>
 										</div>
 									</div>
-									<ul class="view-mode">
-										<li class="active"><a href="shop-grid.html"><i class="fa fa-th-large"></i></a></li>
-										<li><a href="shop-list.html"><i class="fa fa-th-list"></i></a></li>
+									<ul class="view-mode list-page">
+										<li class="active">1</li>
+										<li>2</li>
+										<li>3</li>
+										<li>4</li>
 									</ul>
 								</div>
 								<!--/ End Shop Top -->
@@ -378,23 +322,22 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.11.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.11.png" alt="#">
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Women Hot Collection</a></h3>
+										<h3><a href="product-info.html">Rèm lá nhựa đơn giản hiện đại</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -404,23 +347,22 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.12.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.12.png" alt="#">
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Awesome Pink Show</a></h3>
+										<h3><a href="product-info.html">Rèm lá dọc phòng ngủ cao cấp</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -430,23 +372,22 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.13.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.13.png" alt="#">
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+										<h3><a href="product-info.html">Rèm nhựa vân gỗ chất liệu PVC</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -456,24 +397,23 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-											<span class="new">New</span>
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.14.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.14.png" alt="#">
+											<span class="new">Mới</span>
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Women Pant Collectons</a></h3>
+										<h3><a href="product-info.html">Rèm sáo nhôm ngang cao cấp TP.HCM</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -483,23 +423,22 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.15.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.15.png" alt="#">
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+										<h3><a href="product-info.html">Rèm Cầu Vồng All Plus – Behan</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -509,24 +448,23 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-											<span class="price-dec">30% Off</span>
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.16.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.16.png" alt="#">
+											<span class="price-dec">-30%</span>
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Awesome Cap For Women</a></h3>
+										<h3><a href="product-info.html">Rèm cửa sợi kim tuyến màu vàng kem</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -536,23 +474,22 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.17.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.17.png" alt="#">
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Polo Dress For Women</a></h3>
+										<h3><a href="product-info.html">Rèm phòng tắm Hàn Quốc</a></h3>
 										<div class="product-price">
 											<span>$29.00</span>
 										</div>
@@ -562,24 +499,23 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.18.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.18.png" alt="#">
 											<span class="out-of-stock">Hot</span>
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+										<h3><a href="product-info.html">Rèm cửa 2 lớp chống nắng</a></h3>
 										<div class="product-price">
 											<span class="old">$60.00</span>
 											<span>$50.00</span>
@@ -590,26 +526,26 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-											<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-											<span class="new">New</span>
+										<a href="product-info.html">
+											<img class="default-img" src="image/product-image/550x750.19.png" alt="#">
+											<img class="hover-img" src="image/product-image/550x750.19.png" alt="#">
+											<span class="out-of-stock">Hot</span>
 										</a>
 										<div class="button-head">
 											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+												<a></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-details.html">Women Pant Collectons</a></h3>
+										<h3><a href="product-info.html">Rèm vải phối màu đơn giản hiện đại cho phòng ngủ</a></h3>
 										<div class="product-price">
-											<span>$29.00</span>
+											<span class="old">$60.00</span>
+											<span>$50.00</span>
 										</div>
 									</div>
 								</div>
@@ -619,121 +555,7 @@
 				</div>
 			</div>
 		</section>
-		<!--/ End Product Style 1  -->	
-
-		
-		<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
-						</div>
-						<div class="modal-body">
-							<div class="row no-gutters">
-								<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-									<!-- Product Slider -->
-										<div class="product-gallery">
-											<div class="quickview-slider-active">
-												<div class="single-slider">
-													<img src="https://via.placeholder.com/569x528" alt="#">
-												</div>
-												<div class="single-slider">
-													<img src="https://via.placeholder.com/569x528" alt="#">
-												</div>
-												<div class="single-slider">
-													<img src="https://via.placeholder.com/569x528" alt="#">
-												</div>
-												<div class="single-slider">
-													<img src="https://via.placeholder.com/569x528" alt="#">
-												</div>
-											</div>
-										</div>
-									<!-- End Product slider -->
-								</div>
-								<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-									<div class="quickview-content">
-										<h2>Flared Shift Dress</h2>
-										<div class="quickview-ratting-review">
-											<div class="quickview-ratting-wrap">
-												<div class="quickview-ratting">
-													<i class="yellow fa fa-star"></i>
-													<i class="yellow fa fa-star"></i>
-													<i class="yellow fa fa-star"></i>
-													<i class="yellow fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<a href="#"> (1 customer review)</a>
-											</div>
-											<div class="quickview-stock">
-												<span><i class="fa fa-check-circle-o"></i> in stock</span>
-											</div>
-										</div>
-										<h3>$29.00</h3>
-										<div class="quickview-peragraph">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
-										</div>
-										<div class="size">
-											<div class="row">
-												<div class="col-lg-6 col-12">
-													<h5 class="title">Size</h5>
-													<select>
-														<option selected="selected">s</option>
-														<option>m</option>
-														<option>l</option>
-														<option>xl</option>
-													</select>
-												</div>
-												<div class="col-lg-6 col-12">
-													<h5 class="title">Color</h5>
-													<select>
-														<option selected="selected">orange</option>
-														<option>purple</option>
-														<option>black</option>
-														<option>pink</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="quantity">
-											<!-- Input Order -->
-											<div class="input-group">
-												<div class="button minus">
-													<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-														<i class="ti-minus"></i>
-													</button>
-												</div>
-												<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
-												<div class="button plus">
-													<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-														<i class="ti-plus"></i>
-													</button>
-												</div>
-											</div>
-											<!--/ End Input Order -->
-										</div>
-										<div class="add-to-cart">
-											<a href="#" class="btn">Add to cart</a>
-											<a href="#" class="btn min"><i class="ti-heart"></i></a>
-											<a href="#" class="btn min"><i class="fa fa-compress"></i></a>
-										</div>
-										<div class="default-social">
-											<h4 class="share-now">Share:</h4>
-											<ul>
-												<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-												<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-												<li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-												<li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Modal end -->
+		<!--/ End Product Style 1  -->
 		
 		<!-- Start Footer Area -->
 	<footer class="footer">
@@ -747,21 +569,21 @@
 							<div class="logo">
 								<a href="index.html"><img src="images/logo/logo_white.svg" style="width: 35%" alt="#"></a>
 							</div>
-							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+							<p class="text">Chuyên cung cấp các sản phẩm rèm cửa đẹp và các phụ kiện trang trí nhà cửa, văn phòng hàng đầu hiện nay.</p>
+							<p class="call">Hotline 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Information</h4>
+							<h4>Thông Tin</h4>
 							<ul>
-								<li><a href="#">About Us</a></li>
+								<li><a href="#">Về chúng tôi</a></li>
 								<li><a href="#">Faq</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Help</a></li>
+								<li><a href="#">Điều khoản và điều kiện</a></li>
+								<li><a href="#">Liên hệ chúng tôi</a></li>
+								<li><a href="#">Trợ giúp</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -769,13 +591,13 @@
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Customer Service</h4>
+							<h4>Dịch Vụ Khách Hàng</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
+								<li><a href="#">Phương thức thanh toán</a></li>
+								<li><a href="#">Hoàn tiền</a></li>
+								<li><a href="#">Đổi trả</a></li>
 								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">Chính sách bảo mật</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -783,14 +605,14 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>Liên Lạc</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>NO. 342 - London Oxford Street.</li>
-									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
-									<li>+032 3456 7890</li>
+									<li>Linh Trung, NÔNG LÂM UNIVERSITY.</li>
+									<li>Thủ Đức, Thành Phố HCM</li>
+									<li>hellu@eshop.com</li>
+									<li>+08412345678</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
@@ -813,7 +635,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-12" style="margin-left: 380px">
 							<div class="left">
-								<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+								<p>Copyright © 2023 <a href="#" target="_blank">Curtainshop</a>  -  Đã đăng kí bản quyền.</p>
 							</div>
 						</div>
 					</div>

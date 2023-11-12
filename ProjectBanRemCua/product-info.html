@@ -1,348 +1,558 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zxx">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Product Infomation</title>
-    <link rel="stylesheet" href="css/product-info.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='copyright' content=''>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title Tag  -->
+    <title>Thông Tin Sản Phẩm</title>
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+    <!-- StyleSheet -->
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/niceselect.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="css/flex-slider.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl-carousel.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
-    <div id="page">
-        <header class="header">
-            <div class="page-container">
-                <div class="sub-header">
-                    <div class="left-header">
-                        <div class="logo">
-                            <a href="index.html"><img src="images/logo/logo_black.png" alt="logo" ></a>
+<body class="js">
+<!-- Preloader -->
+<div class="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-icon">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<header class="header shop">
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-12">
+                    <!-- Top Left -->
+                    <div class="top-left">
+                    </div>
+                    <!--/ End Top Left -->
+                </div>
+                <div class="col-lg-8 col-md-12 col-12">
+                    <!-- Top Right -->
+                    <div class="right-content">
+                        <ul class="list-main">
+                            <li><i class="ti-user"></i> <a href="user.html">Tài khoản</a></li>
+                            <li><i class="ti-power-off"></i><a href="login.html">Đăng Nhập</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Top Right -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Topbar -->
+    <div class="middle-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-12">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html"><img src="images/logo/logo_black.jpg" alt="logo"></a>
+                    </div>
+                    <!--/ End Logo -->
+                    <!-- Search Form -->
+                    <div class="search-top">
+                        <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
+                        <!-- Search Form -->
+                        <div class="search-top">
+                            <form class="search-form">
+                                <input type="text" placeholder="Tìm kiếm..." name="search">
+                                <button value="search" type="submit"><i class="ti-search"></i></button>
+                            </form>
+                        </div>
+                        <!--/ End Search Form -->
+                    </div>
+                    <!--/ End Search Form -->
+                    <div class="mobile-nav"></div>
+                </div>
+                <div class="col-lg-8 col-md-7 col-12">
+                    <div class="search-bar-top">
+                        <div class="search-bar">
+                            <select>
+                                <option selected="selected" >Danh Mục</option>
+                                <option>Rèm Vải</option>
+                                <option>Rèm Cuốn</option>
+                                <option>Rèm Sáo Gỗ</option>
+                                <option>Rèm Kiểu Âu</option>
+                                <option>Rèm Tre/Trúc</option>
+                                <option>Rèm Phòng Tắm</option>
+                                <option>Rèm Sợi</option>
+                                <option>Rèm Roman</option>
+                            </select>
+                            <form>
+                                <input name="search" placeholder="Tìm kiếm ở đây....." type="search">
+                                <button class="btnn"><i class="ti-search"></i></button>
+                            </form>
                         </div>
                     </div>
-                    <div class="right-header">
+                </div>
+                <div class="col-lg-2 col-md-3 col-12">
+                    <div class="right-bar">
+                        <!-- Search Form -->
                         <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa-regular fa-heart"></i></i></a>
-                        </div>
-                        <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa-regular fa-user"></i></a>
+                            <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="sinlge-bar shopping">
-                            <a href="#" class="single-icon"><i class="fa-solid fa-cart-shopping"></i> <span class="total-count"></span></a>
+                            <a href="cart.html" class="single-icon"><i class="ti-bag"></i></a>
+                            <!-- Shopping Item -->
+                            <!--							<div class="shopping-item">-->
+                            <!--								<div class="dropdown-cart-header">-->
+                            <!--									<span>2 Items</span>-->
+                            <!--									<a href="#">View Cart</a>-->
+                            <!--								</div>-->
+                            <!--								<ul class="shopping-list">-->
+                            <!--									<li>-->
+                            <!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
+                            <!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
+                            <!--										<h4><a href="#">Woman Ring</a></h4>-->
+                            <!--										<p class="quantity">1x - <span class="amount">$99.00</span></p>-->
+                            <!--									</li>-->
+                            <!--									<li>-->
+                            <!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
+                            <!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
+                            <!--										<h4><a href="#">Woman Necklace</a></h4>-->
+                            <!--										<p class="quantity">1x - <span class="amount">$35.00</span></p>-->
+                            <!--									</li>-->
+                            <!--								</ul>-->
+                            <!--								<div class="bottom">-->
+                            <!--									<div class="total">-->
+                            <!--										<span>Total</span>-->
+                            <!--										<span class="total-amount">$134.00</span>-->
+                            <!--									</div>-->
+                            <!--									<a href="checkout.html" class="btn animate">Checkout</a>-->
+                            <!--								</div>-->
+                            <!--							</div>-->
+                            <!--/ End Shopping Item -->
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- navbar-->
-        <div class="navbar">
-            <div class="page-container">
-                <nav class="navbar-expand-lg">
-                    <ul class="nav main-menu menu navbar-nav">
-                        <li class="active"><a href="#">Trang chủ</a></li>
-                        <li><a href="shop-grid.html">Sản phẩm</a></li>
-                        <li ><a href="cart.html">Giỏ hàng</a></li>
-                        <li><a href="checkout.html">Check Out</a></li>
-                        <li><a href="contact.html">Liên hệ</a></li>
+        </div>
+    </div>
+    <!-- Header Inner -->
+    <div class="header-inner">
+        <div class="container">
+            <div class="cat-nav-head">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="menu-area">
+                            <!-- Main Menu -->
+                            <nav class="navbar navbar-expand-lg">
+                                <div class="navbar-collapse">
+                                    <div class="nav-inner">
+                                        <ul class="nav main-menu menu navbar-nav">
+                                            <li ><a href="index.html">Trang Chủ</a></li>
+                                            <li class="active"><a href="shop-grid.html">Sản Phẩm<i class="ti-angle-down"></i></a>
+                                                <ul class="dropdown">
+                                                    <li><a href="shop-grid.html">Rèm Vải</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Cuốn</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Sáo Gỗ</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Văn Phòng</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Kiểu Âu</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Tre/Trúc</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Phòng Tắm</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Vải</a></li>
+                                                    <li><a href="shop-grid.html">Rèm Roman</a></li>
+                                                </ul>
+                                            </li>
+                                            <li ><a href="blog-single-sidebar.html">Tin Tức</a></li>
+                                            <li ><a href="blog-index.html">Giới Thiệu</a></li>
+                                            <li ><a href="cart.html">Giỏ Hàng</a></li>
+                                            <li><a href="checkout.html">Thanh Toán</a></li>
+                                            <li><a href="contact.html">Liên Hệ</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <!--/ End Main Menu -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="index.html">Trang Chủ <i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="blog-single.html">Thông Tin Sản Phẩm</a></li>
                     </ul>
-                </nav>
-            </div>
-        </div>
-        <!---->
-
-        <div class="page-container">
-            <div class="product-info-body">
-                <div class="product">
-                    <div class="product-header">
-                        <div class="product-introduce">
-                            <div class="product-image-carosel">
-                                <div class="img-carousel-inner">
-                                    <div class="carousel-item">
-                                        <img src="https://thegioiremcua.vn/wp-content/uploads/2023/02/ban-rem-cua-la-doc.jpg" alt="" class="product-img">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://thegioiremcua.vn/wp-content/uploads/2019/07/rem-sao-go-rsg-09-768x669.jpg" alt="" class="product-img">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://thegioiremcua.vn/wp-content/uploads/2019/09/rem-vai-gia-re-16-768x768.jpg" alt="" class="product-img">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://thegioiremcua.vn/wp-content/uploads/2019/09/rem-cua-han-quoc-5.jpg" alt="" class="product-img">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://thegioiremcua.vn/wp-content/uploads/2019/09/rem-cua-so-14-768x768.jpg" alt="" class="product-img">
-                                    </div>
-
-                                </div>
-                                <!-- Controls -->
-                                <button class="carousel-control left-carousel-ctrl" onclick="plusDivs(-1)">&#10094;</button>
-                                <button class="carousel-control right-carousel-ctrl" onclick="plusDivs(+1)">&#10095;</button>
-
-                            </div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="product-title">
-                                <span class="product-title_text">
-                                    <h1 class="prd-title-txt">Rèm cửa sáo lá dọc cao cấp hiện đại</h1>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <!--strikethrough-->
-                                <s class="product-price_text">20.000.000₫</s>
-                                <p class="product-price_discount-text">10.000.000₫</p>
-                            </div>
-                            <ul class="detail-product-lists">
-                                <li class="detail-prd-item">
-                                    <span class="prd-item-text brand-product">Thuong hieu: Apple</span>
-                                </li>
-                                <li class="detail-prd-item">
-                                    <span class="prd-item-text product-origin">Xuat xu: China</span>
-                                </li>
-                                <li class="detail-prd-item">
-                                    <span class="prd-item-text product-material">Chat lieu: Vai</span>
-                                </li>
-                                <li class="detail-prd-item">
-                                    <span class="prd-item-text product-size">kich thuoc 8,9cm , 10cm , 12,7 cm</span>
-                                </li>
-                                <li class="detail-prd-item">
-                                    <span class="prd-item-text baohanh">Bao hanh: 12 thang</span>
-                                </li>
-                            </ul>
-
-                            <div class="buying-button">
-                                <div class="subquantity">
-                                    <span class="quantity-text">Số lượng: </span>
-                                    <div class="prod-quantity">
-                                        <button class="minus-1-bt quantity-btn" onclick="changeQuantity(-1)"> -</button>
-                                        <input type="number" class="product-quantities" id="product-quantities-id" step="1" min="1">
-                                        <button class="add-1-bt quantity-btn" onclick="changeQuantity(+1)">+</button>
-                                    </div>
-                                </div>
-                                <div class="action-button">
-                                    <button class="add-to-cart_button action-button_item">THÊM VÀO GIỎ HÀNG</button>
-                                    <button class="buy-now_button action-button_item">MUA NGAY</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="product-describe">
-                        <h5 class="describe-title">San Pham A</h5>
-                        <div class="product-describe-text">
-                            <h5>Kiểu dáng cấu tạo rèm lá dọc</h5>
-                            <p>Thiết kết đơn giản thanh thoát, nhẹ nhàng, dễ sử dụng, phong phú về kiểu dáng.</p>
-                            <p>lá đứng có cấu tạo phức tạp bởi nhiều bộ phận phụ kiên, chúng bao gồm các bộ phận cụ thể như sau:</p>
-                            <p>Lá rèm làm bằng vải nhựa polyester 100%</p>
-                            <p>Dây liên kết các lá rèm</p>
-                            <p>Dây hạt nhựa điều chỉnh rèm</p>
-                            <p>Nẹp cố định</p>
-                            <p>Thanh ray nhôm</p>
-                            <p>Rèm có cấu tạo là các lá rèm bằng vải được sản xuất theo khổ tương thích thả dọc và liên kết chắc chắn với nhau. Chúng sẽ được kết nối với ray và được điều chỉnh độ rộng – hẹp của các lá rèm thông qua dây hạt nhựa.</p>
-                        </div>
-                    </div>
-                    <div class="user-rate-product">
-
-                    </div>
-                    <div class="more-relate-product">
-                    </div>
-                </div> <!--product-->
-            </div>
-        </div>
-
-        <!--more product-->
-        <div class="product-area">
-
-            <div class="page-container">
-                <div class="more-product-title">
-                    <span class="more-prd-text">Các sản phẩm liên quan</span>
                 </div>
-                <div class="more-prd-slash"></div>
-                <div class="list-more-product">
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumbs -->
 
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="single-product">
-                        <div class="single-product-img">
-                            <a href="product-details.html">
-                                <img class="default-img" src="image/product-image/tempprd.png" alt="#">
-                            </a>
-
-                        </div>
-                        <div class="single-product-content">
-                            <h3><a href="product-details.html">Women Hot Collection</a></h3>
-                            <div class="product-price">
-                                <span class="single-product-price">$29.00</span>
-                            </div>
+<section class="py-5">
+    <div class="container">
+        <div class="row gx-5">
+            <aside class="col-lg-6">
+                <div class="border rounded-4 mb-3 d-flex justify-content-center">
+                        <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="image/product-image/550x750.1.png" />
+                </div>
+<!--                <div class="d-flex justify-content-center mb-3">-->
+<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp" class="item-thumb">-->
+<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp" />-->
+<!--                    </a>-->
+<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp" class="item-thumb">-->
+<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp" />-->
+<!--                    </a>-->
+<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp" class="item-thumb">-->
+<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp" />-->
+<!--                    </a>-->
+<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp" class="item-thumb">-->
+<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp" />-->
+<!--                    </a>-->
+<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp" class="item-thumb">-->
+<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp" />-->
+<!--                    </a>-->
+<!--                </div>-->
+                <!-- thumbs-wrap.// -->
+                <!-- gallery-wrap .end// -->
+            </aside>
+            <main class="col-lg-6">
+                <div class="ps-lg-3">
+                    <h4 class="title text-dark">
+                        Rèm cuốn cửa sổ ấm cúng
+                    </h4>
+                    <div class="d-flex flex-row my-3">
+                        <div class="text-warning mb-1 me-2">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ms-1">
+                4.5
+              </span>
                         </div>
 
                     </div>
 
+                    <div class="mb-3">
+                        <span class="h5">$75.00</span>
+                        <span class="text-muted">/per box</span>
+                    </div>
+
+                    <p>
+                        Màn sáo cuốn chống nắng là sản phẩm rèm cuốn cao cấp có nhiều ưu điểm vượt trội mà các sản phẩm khác không dễ gì có được. Rèm cuốn trơn thoáng giống như lớp vải voan mỏng và khả năng che nắng, cản sáng khoảng 80%. Nó có thể che chắn ánh nắng mặt trời, ánh sáng và cái nhìn xoi mói từ xung quanh.
+                    </p>
+
+                    <div class="row">
+                        <dt class="col-3">Thương Hiệu:</dt>
+                        <dd class="col-9">Hasakuki</dd>
+
+                        <dt class="col-3">Xuất Xứ:</dt>
+                        <dd class="col-9">Trung Quốc</dd>
+
+                        <dt class="col-3">Chất Liệu</dt>
+                        <dd class="col-9">Vải cotton</dd>
+
+                        <dt class="col-3">Kích Thước</dt>
+                        <dd class="col-9">8.9cm , 10cm , 12.7cm</dd>
+
+                        <dt class="col-3">Bảo Hành</dt>
+                        <dd class="col-9">12 Tháng</dd>
+                    </div>
+
+                    <hr />
+                    <a href="#" class="btn btn-primary shadow-0"></i> Mua Ngay </a>
+                    <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Thêm Vào Giỏ Hàng </a>
+                    <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-heart fa-lg"></i> Yêu Thích </a>
                 </div>
 
-
-            </div>
-
+            </main>
         </div>
+    </div>
+</section>
 
+<!-- Start Most Popular -->
+<div class="product-area most-popular section" style="margin-top: -90px">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Sản Phẩm Liên Quan</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: -40px">
+            <div class="col-12">
+                <div class="owl-carousel popular-slider">
+                    <!-- Start Single Product -->
+                    <div class="single-product">
+                        <div class="product-img">
+                            <a href="product-info.html.html">
+                                <img class="default-img" src="image/product-image/550x750.1.png" alt="#">
+                                <img class="hover-img" src="image/product-image/550x750.1.png" alt="#">
+                                <span class="out-of-stock">Hot</span>
+                            </a>
+                            <div class="button-head">
+                                <div class="product-action">
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+                                    <a></a>
+                                </div>
+                                <div class="product-action-2">
+                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3><a href="product-details.html">Rèm cuốn cửa sổ ấm cúng </a></h3>
+                            <div class="product-price">
+                                <span class="old">$60.00</span>
+                                <span>$50.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Product -->
+                    <!-- Start Single Product -->
+                    <div class="single-product">
+                        <div class="product-img">
+                            <a href="product-details.html">
+                                <img class="default-img" src="image/product-image/550x750.2.png" alt="#">
+                                <img class="hover-img" src="image/product-image/550x750.2.png" alt="#">
+                            </a>
+                            <div class="button-head">
+                                <div class="product-action">
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+                                    <a></a>
+                                </div>
+                                <div class="product-action-2">
+                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3><a href="product-details.html">Màn cuốn vải sọc chống nắng</a></h3>
+                            <div class="product-price">
+                                <span>$50.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Product -->
+                    <!-- Start Single Product -->
+                    <div class="single-product">
+                        <div class="product-img">
+                            <a href="product-details.html">
+                                <img class="default-img" src="image/product-image/550x750.3.png" alt="#">
+                                <img class="hover-img" src="image/product-image/550x750.3.png" alt="#">
+                                <span class="new">Mới</span>
+                            </a>
+                            <div class="button-head">
+                                <div class="product-action">
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+                                    <a></a>
+                                </div>
+                                <div class="product-action-2">
+                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3><a href="product-details.html">Mành cuốn vải hoa văn lá cây</a></h3>
+                            <div class="product-price">
+                                <span>$50.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Product -->
+                    <!-- Start Single Product -->
+                    <div class="single-product">
+                        <div class="product-img">
+                            <a href="product-details.html">
+                                <img class="default-img" src="image/product-image/550x750.4.png" alt="#">
+                                <img class="hover-img" src="image/product-image/550x750.4.png" alt="#">
+                            </a>
+                            <div class="button-head">
+                                <div class="product-action">
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
+                                    <a></a>
+                                </div>
+                                <div class="product-action-2">
+                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3><a href="product-details.html">Rèm cuốn lưới đẹp sang trọng</a></h3>
+                            <div class="product-price">
+                                <span>$50.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Product -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Most Popular Area -->
 
-        <!--footer -->
-        <footer class="footer">
-            <div class="page-container">
-                <div class="inner-footer">
-                        <div class="single-footer single-footer-left">
+<!-- Start Footer Area -->
+<footer class="footer">
+    <!-- Footer Top -->
+    <div class="footer-top section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer about">
                         <div class="logo">
-                            <a href="index.html"><img src="images/logo/logo_white.png" style="width: 120px" alt="#"></a>
+                            <a href="index.html"><img src="images/logo/logo_white.svg" style="width: 35%" alt="#"></a>
                         </div>
-                        <p class="text">Chúng tôi cam kết đem lại cho khách hàng những sản phẩm tốt nhất với giá cả hợp lý và chất lượng.</p>
-                        <p class="call">Mọi thắc mắc xin liên hệ:<span><a href="tel:123456789">0123 456 789</a></span></p>
+                        <p class="text">Chuyên cung cấp các sản phẩm rèm cửa đẹp và các phụ kiện trang trí nhà cửa, văn phòng hàng đầu hiện nay.</p>
+                        <p class="call">Hotline 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
                     </div>
-                    <div class="single-footer">
-                        <h4>Information</h4>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                        <h4>Thông Tin</h4>
                         <ul>
-                            <li class="ft-li"><a href="#">About Us</a></li>
-                            <li class="ft-li"><a href="#">Faq</a></li>
-                            <li class="ft-li"><a href="#">Terms & Conditions</a></li>
-                            <li class="ft-li"><a href="#">Contact Us</a></li>
-                            <li class="ft-li"><a href="#">Help</a></li>
+                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="#">Faq</a></li>
+                            <li><a href="#">Điều khoản và điều kiện</a></li>
+                            <li><a href="#">Liên hệ chúng tôi</a></li>
+                            <li><a href="#">Trợ giúp</a></li>
                         </ul>
                     </div>
-                    <div class="single-footer">
-                        <h4>Customer Service</h4>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                        <h4>Dịch Vụ Khách Hàng</h4>
                         <ul>
-                            <li class="ft-li"><a href="#">Payment Methods</a></li>
-                            <li class="ft-li"><a href="#">Money-back</a></li>
-                            <li class="ft-li"><a href="#">Returns</a></li>
-                            <li class="ft-li"><a href="#">Shipping</a></li>
-                            <li class="ft-li" ><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Phương thức thanh toán</a></li>
+                            <li><a href="#">Hoàn tiền</a></li>
+                            <li><a href="#">Đổi trả</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
                         </ul>
                     </div>
-                    <div class="single-footer ">
-                        <h4>Địa chỉ</h4>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer social">
+                        <h4>Liên Lạc</h4>
                         <!-- Single Widget -->
                         <div class="contact">
                             <ul>
-                                <li>Khoa CNTT, Đại học Nông Lâm Thành Phố Hồ Chí Minh.</li>
-                                <li>Thành phố Hồ Chí Minh, Việt Nam.</li>
-                                <li>info@eshop.com</li>
-                                <li>0123 456 789</li>
+                                <li>Linh Trung, NÔNG LÂM UNIVERSITY.</li>
+                                <li>Thủ Đức, Thành Phố HCM</li>
+                                <li>hellu@eshop.com</li>
+                                <li>+08412345678</li>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
-                        <ul class="ft-social">
-                            <li><a href="#"><i class="fa-brands fa-facebook-f" ></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <ul>
+                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                            <li><a href="#"><i class="ti-flickr"></i></a></li>
+                            <li><a href="#"><i class="ti-instagram"></i></a></li>
                         </ul>
                     </div>
+                    <!-- End Single Widget -->
                 </div>
-
-                <div class="ft-slash"></div>
-                <div class="ft-copyright">
-                    <p>Copyright © 2020 <a href="http://www.google.com" target="_blank">Google</a>  -  All Rights Reserved.</p>
-                </div>
-
             </div>
-        </footer>
+        </div>
     </div>
+    <!-- End Footer Top -->
+    <div class="copyright">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6 col-12" style="margin-left: 380px">
+                        <div class="left">
+                            <p>Copyright © 2023 <a href="#" target="_blank">Curtainshop</a>  -  Đã đăng kí bản quyền.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- /End Footer Area -->
 
-    <script src="js/product-info/product-info.js"></script>
-    <script src="js/product-info/changeQuantity.js"></script>
+<!-- Jquery -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.0.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<!-- Popper JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Color JS -->
+<script src="js/colors.js"></script>
+<!-- Slicknav JS -->
+<script src="js/slicknav.min.js"></script>
+<!-- Owl Carousel JS -->
+<script src="js/owl-carousel.js"></script>
+<!-- Magnific Popup JS -->
+<script src="js/magnific-popup.js"></script>
+<!-- Fancybox JS -->
+<script src="js/facnybox.min.js"></script>
+<!-- Waypoints JS -->
+<script src="js/waypoints.min.js"></script>
+<!-- Countdown JS -->
+<script src="js/finalcountdown.min.js"></script>
+<!-- Nice Select JS -->
+<script src="js/nicesellect.js"></script>
+<!-- Ytplayer JS -->
+<script src="js/ytplayer.min.js"></script>
+<!-- Flex Slider JS -->
+<script src="js/flex-slider.js"></script>
+<!-- ScrollUp JS -->
+<script src="js/scrollup.js"></script>
+<!-- Onepage Nav JS -->
+<script src="js/onepage-nav.min.js"></script>
+<!-- Easing JS -->
+<script src="js/easing.js"></script>
+<!-- Active JS -->
+<script src="js/active.js"></script>
 </body>
 </html>
