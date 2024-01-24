@@ -9,14 +9,14 @@ public class GalleryService {
     private static GalleryService instance;
 
     private  GalleryService(){}
-    public  GalleryService getInstance() {
+    public static GalleryService getInstance() {
         if (instance == null) instance = new GalleryService();
         return instance;
     }
 
     public List<Gallery> getListImageByProductId(int productId) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT  * FROM gallery WHERE productId = :prdId")
+            return handle.createQuery("SELECT  * FROM gallerys WHERE productId = :prdId")
                     .bind("prdId", productId)
                     .mapToBean(Gallery.class)
                     .list();
@@ -25,17 +25,39 @@ public class GalleryService {
 
     public boolean addImage(Gallery image) {
         return  JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO gallery(productId, imagePath) VALUES (:productId, :imagePath)")
+            return handle.createUpdate("INSERT INTO gallerys VALUES (:id, :productId, :imagePath)")
                     .bindBean(image)
                     .execute();
         }) > 0;
     }
     public boolean deleteImageByProductId(int productId) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("DELETE FROM gallery WHERE productId = :prdId")
+            return handle.createUpdate("DELETE FROM gallerys WHERE productId = :prdId")
                     .bind("prdId", productId)
                     .execute();
         }) > 0;
     }
 
+    public int getLastGalleryId() {
+        Gallery image = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM gallerys ORDER BY id DESC LIMIT 1")
+                    .mapToBean(Gallery.class)
+                    .one();
+        });
+        return image.getId();
+    }
+
+    public Gallery getOneImageByProductId(int productId) {
+        return JDBIConnector.get().withHandle(handle ->  {
+            return handle.createQuery("SELECT * FROM gallerys WHERE productId = :id")
+                    .bind("id", productId)
+                    .mapToBean(Gallery.class)
+                    .findOne()
+                    .orElse(null);
+        });
+    }
+
+    public static void main(String[] args) {
+        System.out.println(GalleryService.getInstance().getLastGalleryId());
+    }
 }

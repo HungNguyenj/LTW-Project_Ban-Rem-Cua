@@ -1,8 +1,18 @@
 package com.curtainshop.beans;
 
 public class Gallery {
+    private int id;
     private int productId;
     private String imagePath;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public int getProductId() {
         return productId;
@@ -23,7 +33,8 @@ public class Gallery {
     @Override
     public String toString() {
         return "Gallery{" +
-                "productId=" + productId +
+                "id=" + id +
+                ", productId=" + productId +
                 ", imagePath='" + imagePath + '\'' +
                 '}';
     }

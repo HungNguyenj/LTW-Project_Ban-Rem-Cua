@@ -46,8 +46,7 @@ public class ProductService {
     }
     public boolean addProduct(Product product) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO products(productName, productPrice, brandName, material, origin, productDetail, productQuantity) " +
-                    "VALUES (:productName, :productPrice, :brandName, :material, :origin, :productDetail, :productQuantity)")
+            return handle.createUpdate("INSERT INTO products VALUES (:id, :productName, :productPrice, :material, :origin, :type, :productDiscount, :productDetail, :quantity)")
                     .bindBean(product)
                     .execute();
         }) > 0;
@@ -60,4 +59,16 @@ public class ProductService {
         }) > 0;
     }
 
+    public int getLastProductId() {
+        Product product = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT id FROM products ORDER BY id DESC LIMIT 1")
+                    .mapToBean(Product.class)
+                    .one();
+        });
+        return  product.getId();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ProductService.getInstance().getLastProductId());
+    }
 }
