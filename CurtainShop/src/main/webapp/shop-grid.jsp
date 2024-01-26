@@ -1,3 +1,10 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.curtainshop.beans.Product" %>
+<%@ page import="com.curtainshop.services.ProductService" %>
+<%@ page import="com.curtainshop.beans.Gallery" %>
+<%@ page import="com.curtainshop.services.GalleryService" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="com.curtainshop.beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -65,8 +72,14 @@
 							<!-- Top Right -->
 							<div class="right-content">
 								<ul class="list-main">
+									<%
+										HttpSession session1 = request.getSession();
+										User user = (User) session.getAttribute("account");
+										String test = (user == null) ? "Đăng Nhập" : user.getUserName();
+									%>
+
 									<li><i class="ti-user"></i> <a href="user.jsp">Tài khoản</a></li>
-									<li><i class="ti-power-off"></i><a href="login.jsp">Đăng Nhập</a></li>
+									<li><i class="ti-power-off"></i><a href="login.jsp"><%=test%></a></li>
 								</ul>
 							</div>
 							<!-- End Top Right -->
@@ -84,38 +97,14 @@
 								<a href="index.jsp"><img src="images/logo/logo_black.jpg" alt="logo"></a>
 							</div>
 							<!--/ End Logo -->
-							<!-- Search Form -->
-							<div class="search-top">
-								<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-								<!-- Search Form -->
-								<div class="search-top">
-									<form class="search-form">
-										<input type="text" placeholder="Tìm kiếm..." name="search">
-										<button value="search" type="submit"><i class="ti-search"></i></button>
-									</form>
-								</div>
-								<!--/ End Search Form -->
-							</div>
-							<!--/ End Search Form -->
 							<div class="mobile-nav"></div>
 						</div>
 						<div class="col-lg-8 col-md-7 col-12">
 							<div class="search-bar-top">
 								<div class="search-bar">
-<%--									<select>--%>
-<%--										<option selected="selected" >Danh Mục</option>--%>
-<%--										<option>Rèm Vải</option>--%>
-<%--										<option>Rèm Cuốn</option>--%>
-<%--										<option>Rèm Sáo Gỗ</option>--%>
-<%--										<option>Rèm Kiểu Âu</option>--%>
-<%--										<option>Rèm Tre/Trúc</option>--%>
-<%--										<option>Rèm Phòng Tắm</option>--%>
-<%--										<option>Rèm Sợi</option>--%>
-<%--										<option>Rèm Roman</option>--%>
-<%--									</select>--%>
-									<form>
-										<input name="search" placeholder="Tìm kiếm ở đây....." type="search">
-										<button class="btnn"><i class="ti-search"></i></button>
+									<form action="searchController" method="get">
+										<input name="search" placeholder="Tìm kiếm ở đây....." type="search" style="width: 480px">
+										<button class="btnn" type="submit"><i class="ti-search"></i></button>
 									</form>
 								</div>
 							</div>
@@ -128,35 +117,6 @@
 								</div>
 								<div class="sinlge-bar shopping">
 									<a href="cart.jsp" class="single-icon"><i class="ti-bag"></i></a>
-									<!-- Shopping Item -->
-									<!--							<div class="shopping-item">-->
-									<!--								<div class="dropdown-cart-header">-->
-									<!--									<span>2 Items</span>-->
-									<!--									<a href="#">View Cart</a>-->
-									<!--								</div>-->
-									<!--								<ul class="shopping-list">-->
-									<!--									<li>-->
-									<!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-									<!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-									<!--										<h4><a href="#">Woman Ring</a></h4>-->
-									<!--										<p class="quantity">1x - <span class="amount">$99.00</span></p>-->
-									<!--									</li>-->
-									<!--									<li>-->
-									<!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-									<!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-									<!--										<h4><a href="#">Woman Necklace</a></h4>-->
-									<!--										<p class="quantity">1x - <span class="amount">$35.00</span></p>-->
-									<!--									</li>-->
-									<!--								</ul>-->
-									<!--								<div class="bottom">-->
-									<!--									<div class="total">-->
-									<!--										<span>Total</span>-->
-									<!--										<span class="total-amount">$134.00</span>-->
-									<!--									</div>-->
-									<!--									<a href="checkout.jsp" class="btn animate">Checkout</a>-->
-									<!--								</div>-->
-									<!--							</div>-->
-									<!--/ End Shopping Item -->
 								</div>
 							</div>
 						</div>
@@ -280,23 +240,23 @@
 							<div class="col-12">
 								<!-- Shop Top -->
 								<div class="shop-top">
-									<div class="shop-shorter">
-										<div class="single-shorter">
-											<label>Hiển Thị :</label>
-											<select>
-												<option selected="selected">09</option>
-												<option>15</option>
-											</select>
-										</div>
-										<div class="single-shorter">
-											<label>Lọc Theo :</label>
-											<select>
-												<option selected="selected">Tên</option>
-												<option>Giá</option>
-												<option>Mẫu Mã</option>
-											</select>
-										</div>
-									</div>
+<%--									<div class="shop-shorter">--%>
+<%--										<div class="single-shorter">--%>
+<%--											<label>Hiển Thị :</label>--%>
+<%--											<select>--%>
+<%--												<option selected="selected">09</option>--%>
+<%--												<option>15</option>--%>
+<%--											</select>--%>
+<%--										</div>--%>
+<%--										<div class="single-shorter">--%>
+<%--											<label>Lọc Theo :</label>--%>
+<%--											<select>--%>
+<%--												<option selected="selected">Tên</option>--%>
+<%--												<option>Giá</option>--%>
+<%--												<option>Mẫu Mã</option>--%>
+<%--											</select>--%>
+<%--										</div>--%>
+<%--									</div>--%>
 									<ul class="view-mode list-page">
 										<li class="active">1</li>
 										<li>2</li>
@@ -308,237 +268,36 @@
 							</div>
 						</div>
 						<div class="row">
+
+							<% List<Product> allProduct = ProductService.getInstance().getAllProduct(); %>
+							<% for (Product product : allProduct) {%>
+
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.11.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.11.png" alt="#">
+										<a href="product-info.jsp?id=<%=product.getId()%>">
+											<img class="default-img" src="data/images/<%=GalleryService.getInstance().getOneImageByProductId(product.getId()).getImageName()%>" alt="#">
+											<img class="hover-img" src="data/images/<%=GalleryService.getInstance().getOneImageByProductId(product.getId()).getImageName()%>" alt="#">
 										</a>
 										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
 											<div class="product-action-2">
 												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm lá nhựa đơn giản hiện đại</a></h3>
+										<h3><a href="product-info.jsp?id=<%=product.getId()%>"><%=product.getProductName()%></a></h3>
 										<div class="product-price">
-											<span>200,000đ</span>
+											<%NumberFormat currentFormat = NumberFormat.getCurrencyInstance(java.util.Locale.forLanguageTag("vi-VN"));%>
+											<span class="old"> <%=currentFormat.format(product.getProductPrice())%> </span>
+											<span style="font-size: 22px; color: #f7941d;"> <%= currentFormat.format(product.getProductPrice() - (product.getProductPrice() * product.getProductDiscount() / 100))%> </span>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.12.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.12.png" alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm lá dọc phòng ngủ cao cấp</a></h3>
-										<div class="product-price">
-											<span>130,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.13.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.13.png" alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm nhựa vân gỗ chất liệu PVC</a></h3>
-										<div class="product-price">
-											<span>400,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.14.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.14.png" alt="#">
-											<span class="new">Mới</span>
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm sáo nhôm ngang cao cấp TP.HCM</a></h3>
-										<div class="product-price">
-											<span>160,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.15.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.15.png" alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm Cầu Vồng All Plus – Behan</a></h3>
-										<div class="product-price">
-											<span>180,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.16.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.16.png" alt="#">
-											<span class="price-dec">-30%</span>
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm cửa sợi kim tuyến màu vàng kem</a></h3>
-										<div class="product-price">
-											<span>520,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.17.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.17.png" alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm phòng tắm Hàn Quốc</a></h3>
-										<div class="product-price">
-											<span>80,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.18.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.18.png" alt="#">
-											<span class="out-of-stock">Hot</span>
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm cửa 2 lớp chống nắng</a></h3>
-										<div class="product-price">
-											<span class="old">300,000đ</span>
-											<span>250,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-info.jsp">
-											<img class="default-img" src="image/product-image/550x750.19.png" alt="#">
-											<img class="hover-img" src="image/product-image/550x750.19.png" alt="#">
-											<span class="out-of-stock">Hot</span>
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-												<a></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-info.jsp">Rèm vải phối màu đơn giản hiện đại cho phòng ngủ</a></h3>
-										<div class="product-price">
-											<span class="old">300,000đ</span>
-											<span>200,000đ</span>
-										</div>
-									</div>
-								</div>
-							</div>
+
+							<%}%>
+
 						</div>
 					</div>
 				</div>

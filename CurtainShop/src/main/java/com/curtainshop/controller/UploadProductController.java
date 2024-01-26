@@ -18,7 +18,7 @@ import java.util.Collection;
         maxRequestSize =1024 * 1024 * 100
 )
 public class UploadProductController extends HttpServlet {
-    private String dataPath = "https://localhost:8080/CurtainShop/data/images";
+    private String dataPath = "D:/Github/LTW-Project_Ban-Rem-Cua/CurtainShop/src/main/webapp/data/images";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,13 +60,14 @@ public class UploadProductController extends HttpServlet {
             if (fileName == null)
                 continue;
 
-                String imagePath = dataPath + "/" + productName + "_" + fileName;
+                String imagePath = dataPath + "/" + fileName;
                 part.write(imagePath);
 
                 Gallery image = new Gallery();
                 int galleryId = GalleryService.getInstance().getLastGalleryId() + 1;
                 image.setId(galleryId);
                 image.setProductId(productId);
+                image.setImageName(fileName);
                 image.setImagePath(imagePath);
 
                 GalleryService.getInstance().addImage(image);

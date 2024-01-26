@@ -1,3 +1,4 @@
+<%@ page import="com.curtainshop.beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -64,8 +65,14 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
+								<%
+									HttpSession session1 = request.getSession();
+									User user = (User) session.getAttribute("account");
+									String test = (user == null) ? "Đăng Nhập" : user.getUserName();
+								%>
+
 								<li><i class="ti-user"></i> <a href="user.jsp">Tài khoản</a></li>
-								<li><i class="ti-power-off"></i><a href="login.jsp">Đăng Nhập</a></li>
+								<li><i class="ti-power-off"></i><a href="login.jsp"><%=test%></a></li>
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -101,20 +108,9 @@
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-<%--								<select>--%>
-<%--									<option selected="selected" >Danh Mục</option>--%>
-<%--									<option>Rèm Vải</option>--%>
-<%--									<option>Rèm Cuốn</option>--%>
-<%--									<option>Rèm Sáo Gỗ</option>--%>
-<%--									<option>Rèm Kiểu Âu</option>--%>
-<%--									<option>Rèm Tre/Trúc</option>--%>
-<%--									<option>Rèm Phòng Tắm</option>--%>
-<%--									<option>Rèm Sợi</option>--%>
-<%--									<option>Rèm Roman</option>--%>
-<%--								</select>--%>
-								<form>
-									<input name="search" placeholder="Tìm kiếm ở đây....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
+								<form action="searchController" method="get">
+									<input name="search" placeholder="Tìm kiếm ở đây....." type="search" style="width: 480px">
+									<button class="btnn" type="submit"><i class="ti-search"></i></button>
 								</form>
 							</div>
 						</div>

@@ -25,7 +25,7 @@ public class GalleryService {
 
     public boolean addImage(Gallery image) {
         return  JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("INSERT INTO gallerys VALUES (:id, :productId, :imagePath)")
+            return handle.createUpdate("INSERT INTO gallerys VALUES (:id, :productId, :imageName, :imagePath)")
                     .bindBean(image)
                     .execute();
         }) > 0;
@@ -49,7 +49,7 @@ public class GalleryService {
 
     public Gallery getOneImageByProductId(int productId) {
         return JDBIConnector.get().withHandle(handle ->  {
-            return handle.createQuery("SELECT * FROM gallerys WHERE productId = :id")
+            return handle.createQuery("SELECT * FROM gallerys WHERE productId = :id LIMIT 1")
                     .bind("id", productId)
                     .mapToBean(Gallery.class)
                     .findOne()
@@ -59,5 +59,6 @@ public class GalleryService {
 
     public static void main(String[] args) {
         System.out.println(GalleryService.getInstance().getLastGalleryId());
+        System.out.println(GalleryService.getInstance().getOneImageByProductId(1).getImageName());
     }
 }

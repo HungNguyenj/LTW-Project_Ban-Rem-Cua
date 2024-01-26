@@ -1,3 +1,10 @@
+<%@ page import="com.curtainshop.beans.Product" %>
+<%@ page import="com.curtainshop.services.ProductService" %>
+<%@ page import="com.curtainshop.services.GalleryService" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.curtainshop.beans.User" %>
+<%@ page import="com.curtainshop.beans.Gallery" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -38,6 +45,50 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        #image-container {
+            max-width: 400px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        #image-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        #prev-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #fff;
+            color: #000000;
+            font-size: 16px;
+            left: 10px;
+        }
+
+        #next-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #fff;
+            color: #000000;
+            font-size: 16px;
+            right: 10px;
+        }
+    </style>
+
 </head>
 <body class="js">
 <header class="header shop">
@@ -55,8 +106,14 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
+                            <%
+                                HttpSession session1 = request.getSession();
+                                User user = (User) session.getAttribute("account");
+                                String test = (user == null) ? "Đăng Nhập" : user.getUserName();
+                            %>
+
                             <li><i class="ti-user"></i> <a href="user.jsp">Tài khoản</a></li>
-                            <li><i class="ti-power-off"></i><a href="login.jsp">Đăng Nhập</a></li>
+                            <li><i class="ti-power-off"></i><a href="login.jsp"><%=test%></a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -74,38 +131,14 @@
                         <a href="index.jsp"><img src="images/logo/logo_black.jpg" alt="logo"></a>
                     </div>
                     <!--/ End Logo -->
-                    <!-- Search Form -->
-                    <div class="search-top">
-                        <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <form class="search-form">
-                                <input type="text" placeholder="Tìm kiếm..." name="search">
-                                <button value="search" type="submit"><i class="ti-search"></i></button>
-                            </form>
-                        </div>
-                        <!--/ End Search Form -->
-                    </div>
-                    <!--/ End Search Form -->
                     <div class="mobile-nav"></div>
                 </div>
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">
                         <div class="search-bar">
-<%--                            <select>--%>
-<%--                                <option selected="selected" >Danh Mục</option>--%>
-<%--                                <option>Rèm Vải</option>--%>
-<%--                                <option>Rèm Cuốn</option>--%>
-<%--                                <option>Rèm Sáo Gỗ</option>--%>
-<%--                                <option>Rèm Kiểu Âu</option>--%>
-<%--                                <option>Rèm Tre/Trúc</option>--%>
-<%--                                <option>Rèm Phòng Tắm</option>--%>
-<%--                                <option>Rèm Sợi</option>--%>
-<%--                                <option>Rèm Roman</option>--%>
-<%--                            </select>--%>
-                            <form>
-                                <input name="search" placeholder="Tìm kiếm ở đây....." type="search">
-                                <button class="btnn"><i class="ti-search"></i></button>
+                            <form action="searchController" method="get">
+                                <input name="search" placeholder="Tìm kiếm ở đây....." type="search" style="width: 480px">
+                                <button class="btnn" type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -118,35 +151,6 @@
                         </div>
                         <div class="sinlge-bar shopping">
                             <a href="cart.jsp" class="single-icon"><i class="ti-bag"></i></a>
-                            <!-- Shopping Item -->
-                            <!--							<div class="shopping-item">-->
-                            <!--								<div class="dropdown-cart-header">-->
-                            <!--									<span>2 Items</span>-->
-                            <!--									<a href="#">View Cart</a>-->
-                            <!--								</div>-->
-                            <!--								<ul class="shopping-list">-->
-                            <!--									<li>-->
-                            <!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-                            <!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-                            <!--										<h4><a href="#">Woman Ring</a></h4>-->
-                            <!--										<p class="quantity">1x - <span class="amount">$99.00</span></p>-->
-                            <!--									</li>-->
-                            <!--									<li>-->
-                            <!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-                            <!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-                            <!--										<h4><a href="#">Woman Necklace</a></h4>-->
-                            <!--										<p class="quantity">1x - <span class="amount">$35.00</span></p>-->
-                            <!--									</li>-->
-                            <!--								</ul>-->
-                            <!--								<div class="bottom">-->
-                            <!--									<div class="total">-->
-                            <!--										<span>Total</span>-->
-                            <!--										<span class="total-amount">$134.00</span>-->
-                            <!--									</div>-->
-                            <!--									<a href="checkout.jsp" class="btn animate">Checkout</a>-->
-                            <!--								</div>-->
-                            <!--							</div>-->
-                            <!--/ End Shopping Item -->
                         </div>
                     </div>
                 </div>
@@ -214,89 +218,79 @@
     </div>
 </div>
 <!-- End Breadcrumbs -->
+<% int prdId = Integer.valueOf(request.getParameter("id")); %>
+<%Product product = ProductService.getInstance().getById(prdId);%>
 
 <section class="py-5">
     <div class="container">
         <div class="row gx-5">
             <aside class="col-lg-6">
                 <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                        <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="image/product-image/550x750.1.png" />
+                    <div id="image-container" style="position: absolute">
+                        <div id="image-slider">
+                            <%List<Gallery> listImage = GalleryService.getInstance().getListImageByProductId(product.getId()); %>
+                            <% for (Gallery image : listImage) { %>
+
+                            <div class="slide"><img src="data/images/<%=image.getImageName()%>" alt="#" ></div>
+
+                            <%}%>
+                            <!-- Add more images as needed -->
+                        </div>
+                        <button id="prev-button" onclick="prevImage()"> < </button>
+                        <button id="next-button" onclick="nextImage()"> > </button>
+                    </div>
                 </div>
-<!--                <div class="d-flex justify-content-center mb-3">-->
-<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp" class="item-thumb">-->
-<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big1.webp" />-->
-<!--                    </a>-->
-<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp" class="item-thumb">-->
-<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big2.webp" />-->
-<!--                    </a>-->
-<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp" class="item-thumb">-->
-<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big3.webp" />-->
-<!--                    </a>-->
-<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp" class="item-thumb">-->
-<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big4.webp" />-->
-<!--                    </a>-->
-<!--                    <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp" class="item-thumb">-->
-<!--                        <img width="60" height="60" class="rounded-2" src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/detail1/big.webp" />-->
-<!--                    </a>-->
-<!--                </div>-->
-                <!-- thumbs-wrap.// -->
-                <!-- gallery-wrap .end// -->
+
             </aside>
             <main class="col-lg-6">
+
                 <div class="ps-lg-3">
                     <h4 class="title text-dark">
-                        Rèm cuốn cửa sổ ấm cúng
+                        <%=product.getProductName()%>
                     </h4>
-                    <div class="d-flex flex-row my-3">
-                        <div class="text-warning mb-1 me-2">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span class="ms-1">
-                4.5
-              </span>
-                        </div>
-
-                    </div>
 
                     <div class="mb-3">
-                        <span class="h5">700,000đ</span>
-                        <span class="text-muted">/per box</span>
+                        <div class="product-price">
+                            <%NumberFormat currentFormat = NumberFormat.getCurrencyInstance(java.util.Locale.forLanguageTag("vi-VN"));%>
+                            <s style="font-size: 15px"><%=currentFormat.format(product.getProductPrice())%></s>
+                            <span style="font-size: 22px; color: #f7941d; font-weight: 700"><%=currentFormat.format(product.getProductPrice() - (product.getProductPrice() * product.getProductDiscount() / 100))%></span>
+                        </div>
                     </div>
 
-                    <p>
-                        Màn sáo cuốn chống nắng là sản phẩm rèm cuốn cao cấp có nhiều ưu điểm vượt trội mà các sản phẩm khác không dễ gì có được. Rèm cuốn trơn thoáng giống như lớp vải voan mỏng và khả năng che nắng, cản sáng khoảng 80%. Nó có thể che chắn ánh nắng mặt trời, ánh sáng và cái nhìn xoi mói từ xung quanh.
+                    <p style="font-size: 14px">
+                        <%=product.getProductDetail()%>
                     </p>
 
                     <div class="row">
-                        <dt class="col-3">Thương Hiệu:</dt>
-                        <dd class="col-9">Hasakuki</dd>
-
-                        <dt class="col-3">Xuất Xứ:</dt>
-                        <dd class="col-9">Trung Quốc</dd>
 
                         <dt class="col-3">Chất Liệu</dt>
-                        <dd class="col-9">Vải cotton</dd>
+                        <dd class="col-9"><%=product.getMaterial()%></dd>
 
-                        <dt class="col-3">Kích Thước</dt>
-                        <dd class="col-9">8.9cm , 10cm , 12.7cm</dd>
+                        <dt class="col-3">Xuất Xứ:</dt>
+                        <dd class="col-9"><%=product.getOrigin()%></dd>
+
+                        <dt class="col-3">Loại rèm:</dt>
+                        <dd class="col-9"><%=product.getType()%></dd>
 
                         <dt class="col-3">Bảo Hành</dt>
                         <dd class="col-9">12 Tháng</dd>
                     </div>
 
                     <hr />
-                    <a href="#" class="btn btn-primary shadow-0"></i> Mua Ngay </a>
-                    <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Thêm Vào Giỏ Hàng </a>
-                    <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-heart fa-lg"></i> Yêu Thích </a>
+                    <form action="CartController?productId=<%=product.getId()%>&quantity=1" method="post">
+                        <button class="btn btn-primary shadow-0" style="color: #FFFFFF" type="submit">Mua ngay</button>
+                    </form>
+                    <form action="CartController?productId=<%=product.getId()%>&quantity=1&urlId=1" method="post" style="margin-top: 5px">
+                        <button type="submit" class="btn btn-primary shadow-0" style="color: #FFFFFF"><i class="me-1 fa fa-shopping-basket"></i>Thêm vào giỏ hàng</button>
+                    </form>
                 </div>
 
             </main>
         </div>
     </div>
 </section>
+
+<div style="margin-top: 170px; margin-bottom: 100px"></div>
 
 <!-- Start Most Popular -->
 <div class="product-area most-popular section" style="margin-top: -90px">
@@ -311,109 +305,32 @@
         <div class="row" style="margin-top: -40px">
             <div class="col-12">
                 <div class="owl-carousel popular-slider">
+                    <% List<Product> listpopular = ProductService.getInstance().getAllProduct(); %>
+                    <% for (Product popularProduct : listpopular) { %>
+                    <% if (popularProduct.getId() == product.getId()) continue;%>
                     <!-- Start Single Product -->
                     <div class="single-product">
                         <div class="product-img">
-                            <a href="product-info.jsp">
-                                <img class="default-img" src="image/product-image/550x750.1.png" alt="#">
-                                <img class="hover-img" src="image/product-image/550x750.1.png" alt="#">
-                                <span class="out-of-stock">Hot</span>
+                            <a href="product-info.jsp?id=<%=popularProduct.getId()%>">
+                                <img class="default-img" src="data/images/<%=GalleryService.getInstance().getOneImageByProductId(popularProduct.getId()).getImageName()%>" alt="#">
+                                <img class="hover-img" src="data/images/<%=GalleryService.getInstance().getOneImageByProductId(popularProduct.getId()).getImageName()%>" alt="#">
                             </a>
                             <div class="button-head">
-                                <div class="product-action">
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-                                    <a></a>
-                                </div>
                                 <div class="product-action-2">
                                     <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
                                 </div>
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="product-info.jsp">Rèm cuốn cửa sổ ấm cúng </a></h3>
+                            <h3><a href="product-info.jsp?id=<%=popularProduct.getId()%>"><%=popularProduct.getProductName()%></a></h3>
                             <div class="product-price">
-                                <span class="old">120,000đ</span>
-                                <span>100,000đ</span>
+                                <span class="old"><%=currentFormat.format(popularProduct.getProductPrice())%></span>
+                                <span style="font-size: 22px; color: #f7941d;"><%=currentFormat.format(popularProduct.getProductPrice() - (popularProduct.getProductPrice() * popularProduct.getProductDiscount() / 100))%></span>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Product -->
-                    <!-- Start Single Product -->
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="product-info.jsp">
-                                <img class="default-img" src="image/product-image/550x750.2.png" alt="#">
-                                <img class="hover-img" src="image/product-image/550x750.2.png" alt="#">
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-                                    <a></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="product-info.jsp">Màn cuốn vải sọc chống nắng</a></h3>
-                            <div class="product-price">
-                                <span>110,000đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                    <!-- Start Single Product -->
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="product-info.jsp">
-                                <img class="default-img" src="image/product-image/550x750.3.png" alt="#">
-                                <img class="hover-img" src="image/product-image/550x750.3.png" alt="#">
-                                <span class="new">Mới</span>
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-                                    <a></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="product-info.jsp">Mành cuốn vải hoa văn lá cây</a></h3>
-                            <div class="product-price">
-                                <span>285,000đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                    <!-- Start Single Product -->
-                    <div class="single-product">
-                        <div class="product-img">
-                            <a href="product-info.jsp">
-                                <img class="default-img" src="image/product-image/550x750.4.png" alt="#">
-                                <img class="hover-img" src="image/product-image/550x750.4.png" alt="#">
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-                                    <a></a>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="product-info.jsp">Rèm cuốn lưới đẹp sang trọng</a></h3>
-                            <div class="product-price">
-                                <span>320,000đ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
+                    <%}%>
                 </div>
             </div>
         </div>
@@ -499,7 +416,6 @@
                 <div class="row">
                     <div class="col-lg-6 col-12" style="margin-left: 380px">
                         <div class="left">
-                            <p>Copyright © 2023 <a href="#" target="_blank">Curtainshop</a>  -  Đã đăng kí bản quyền.</p>
                         </div>
                     </div>
                 </div>
@@ -545,5 +461,26 @@
 <script src="js/easing.js"></script>
 <!-- Active JS -->
 <script src="js/active.js"></script>
+<!-- Hiển thị ảnh -->
+<script>
+    let currentIndex = 0;
+    const totalImages = document.querySelectorAll('.slide').length;
+
+    function showImage(index) {
+        const slider = document.getElementById('image-slider');
+        const offset = -index * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        showImage(currentIndex);
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        showImage(currentIndex);
+    }
+</script>
 </body>
 </html>

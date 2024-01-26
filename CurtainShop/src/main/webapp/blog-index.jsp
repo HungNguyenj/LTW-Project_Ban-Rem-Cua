@@ -1,3 +1,4 @@
+<%@ page import="com.curtainshop.beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -63,8 +64,14 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
+                            <%
+                                HttpSession session1 = request.getSession();
+                                User user = (User) session.getAttribute("account");
+                                String test = (user == null) ? "Đăng Nhập" : user.getUserName();
+                            %>
+
                             <li><i class="ti-user"></i> <a href="user.jsp">Tài khoản</a></li>
-                            <li><i class="ti-power-off"></i><a href="login.jsp">Đăng Nhập</a></li>
+                            <li><i class="ti-power-off"></i><a href="login.jsp"><%=test%></a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -100,20 +107,9 @@
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">
                         <div class="search-bar">
-<%--                            <select>--%>
-<%--                                <option selected="selected" >Danh Mục</option>--%>
-<%--                                <option>Rèm Vải</option>--%>
-<%--                                <option>Rèm Cuốn</option>--%>
-<%--                                <option>Rèm Sáo Gỗ</option>--%>
-<%--                                <option>Rèm Kiểu Âu</option>--%>
-<%--                                <option>Rèm Tre/Trúc</option>--%>
-<%--                                <option>Rèm Phòng Tắm</option>--%>
-<%--                                <option>Rèm Sợi</option>--%>
-<%--                                <option>Rèm Roman</option>--%>
-<%--                            </select>--%>
-                            <form>
-                                <input name="search" placeholder="Tìm kiếm ở đây....." type="search">
-                                <button class="btnn"><i class="ti-search"></i></button>
+                            <form action="searchController" method="get">
+                                <input name="search" placeholder="Tìm kiếm ở đây....." type="search" style="width: 480px">
+                                <button class="btnn" type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
@@ -126,35 +122,6 @@
                         </div>
                         <div class="sinlge-bar shopping">
                             <a href="cart.jsp" class="single-icon"><i class="ti-bag"></i></a>
-                            <!-- Shopping Item -->
-                            <!--							<div class="shopping-item">-->
-                            <!--								<div class="dropdown-cart-header">-->
-                            <!--									<span>2 Items</span>-->
-                            <!--									<a href="#">View Cart</a>-->
-                            <!--								</div>-->
-                            <!--								<ul class="shopping-list">-->
-                            <!--									<li>-->
-                            <!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-                            <!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-                            <!--										<h4><a href="#">Woman Ring</a></h4>-->
-                            <!--										<p class="quantity">1x - <span class="amount">$99.00</span></p>-->
-                            <!--									</li>-->
-                            <!--									<li>-->
-                            <!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-                            <!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-                            <!--										<h4><a href="#">Woman Necklace</a></h4>-->
-                            <!--										<p class="quantity">1x - <span class="amount">$35.00</span></p>-->
-                            <!--									</li>-->
-                            <!--								</ul>-->
-                            <!--								<div class="bottom">-->
-                            <!--									<div class="total">-->
-                            <!--										<span>Total</span>-->
-                            <!--										<span class="total-amount">$134.00</span>-->
-                            <!--									</div>-->
-                            <!--									<a href="checkout.jsp" class="btn animate">Checkout</a>-->
-                            <!--								</div>-->
-                            <!--							</div>-->
-                            <!--/ End Shopping Item -->
                         </div>
                     </div>
                 </div>
@@ -211,9 +178,8 @@
         <h1 style="text-align: center; margin-top: 50px"> Curtain - Shop</h1>
         <p style="text-align: left; margin-top: 20px">Thế giới rèm cửa là đơn vị chuyên kinh doanh và cung cấp các sản phẩm trang trí nhà cửa với sản phẩm chủ lực rèm cửa và phụ kiện nội thất trang trí đa dạng. Chúng tôi đã nhận được sự tin tưởng khách hàng trong suốt chặng đường nhiều năm qua.</p>
         <h5 style="text-align: center; margin-top: 20px">Với cam kết m
-            ang đến sản phẩm tốt nhất, đẹp nhất tới khách hàng, nhiều năm qu
-            chúng tôi đã luôn cố gắng cập nhật cải tiến sản phẩm và chất lượng t
-            ừ sản phẩm cho đến dịch vụ để phục vụ quý khách hàng.</h5>
+            ang đến sản phẩm tốt nhất, đẹp nhất tới khách hàng, nhiều năm qua
+            chúng tôi đã luôn cố gắng cập nhật cải tiến sản phẩm và chất lượng từ sản phẩm cho đến dịch vụ để phục vụ quý khách hàng.</h5>
         <h6 style="margin-top: 20px;margin-bottom: 20px">Giá trị cốt lõi:</h6>
         <ul class="text-content" style="margin-bottom: 20px">
             <li style="margin-bottom: 20px">* Mang sản phẩm chất lượng hàng đầu tới khách hàng</li>

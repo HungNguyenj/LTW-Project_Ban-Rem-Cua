@@ -2,6 +2,9 @@
 <%@ page import="com.curtainshop.beans.Product" %>
 <%@ page import="com.curtainshop.services.OrderService" %>
 <%@ page import="com.curtainshop.services.GalleryService" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="com.curtainshop.beans.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -65,8 +68,20 @@
 					<!-- Top Right -->
 					<div class="right-content">
 						<ul class="list-main">
-							<li><i class="ti-user"></i> <a href="user.jsp">Tài khoản</a></li>
-							<li><i class="ti-power-off"></i><a href="login.jsp">Đăng Nhập</a></li>
+							<%
+								session = request.getSession();
+								User user = (User) session.getAttribute("account");
+								String test = (user == null) ? "Đăng Nhập" : user.getUserName();
+
+								String accURL = "user.jsp";
+								if (user != null && user.getRoleId() == 1) {
+									accURL = "admin/product-manager.jsp";
+								}
+							%>
+
+							<li><i class="ti-user"></i> <a href="<%=accURL%>">Tài khoản</a></li>
+							<li><i class="ti-power-off"></i><a href="login.jsp"><%=test%></a></li>
+
 						</ul>
 					</div>
 					<!-- End Top Right -->
@@ -99,9 +114,9 @@
 <%--								<option>Rèm Sợi</option>--%>
 <%--								<option>Rèm Roman</option>--%>
 <%--							</select>--%>
-							<form>
+							<form action="searchController" method="get">
 								<input name="search" placeholder="Tìm kiếm ở đây....." type="search" style="width: 480px">
-								<button class="btnn"><i class="ti-search"></i></button>
+								<button class="btnn" type="submit"><i class="ti-search"></i></button>
 							</form>
 						</div>
 					</div>
@@ -170,28 +185,7 @@
 
 <!-- Slider Area -->
 <section class="hero-slider">
-	<!-- Single Slider -->
-<%--	<div class="single-slider">--%>
-<%--		<div class="container">--%>
-<%--			<div class="row no-gutters">--%>
-<%--				<div class="col-lg-9 offset-lg-3 col-12">--%>
-<%--					<div class="text-inner">--%>
-<%--						<div class="row">--%>
-<%--							<div class="col-lg-7 col-12">--%>
-<%--								<div class="hero-text">--%>
-<%--									<h1 style="color: white"> <span>GIẢM GIÁ 50% </span> SANG TRỌNG</h1>--%>
-<%--									<div class="button">--%>
-<%--										<a href="#" class="btn">Mua Ngay!</a>--%>
-<%--									</div>--%>
-<%--								</div>--%>
-<%--							</div>--%>
-<%--						</div>--%>
-<%--					</div>--%>
-<%--				</div>--%>
-<%--			</div>--%>
-<%--		</div>--%>
-<%--	</div>--%>
-	<!--/ End Single Slider -->
+
 </section>
 <!--/ End Slider Area -->
 
@@ -253,110 +247,39 @@
 		<div class="row" style="margin-top: -40px">
 			<div class="col-12">
 				<div class="owl-carousel popular-slider">
+					<% List<Product> listTrend = ProductService.getInstance().getAllProduct(); %>
+					<% for (Product product : listTrend) { %>
 					<!-- Start Single Product -->
 					<div class="single-product">
 						<div class="product-img">
-							<a href="product-info.jsp">
-								<img class="default-img" src="image/product-image/550x750.1.png" alt="#">
-								<img class="hover-img" src="image/product-image/550x750.1.png" alt="#">
+							<a href="product-info.jsp?id=<%=product.getId()%>">
+								<img class="default-img" src="data/images/<%= GalleryService.getInstance().getOneImageByProductId(product.getId()).getImageName() %>" alt="#">
+								<img class="hover-img" src="data/images/<%= GalleryService.getInstance().getOneImageByProductId(product.getId()).getImageName() %>" alt="#">
 								<span class="out-of-stock">Hot</span>
+<%--								<span class="new">new</span>--%>
 							</a>
 							<div class="button-head">
-								<div class="product-action">
-									<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-									<a></a>
-								</div>
 								<div class="product-action-2">
-									<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
+									<form action="CartController?productId=<%=product.getId()%>&quantity=1&urlId=2" method="post" style="margin-top: 5px">
+										<button type="submit" class="btn btn-primary shadow-0" style="color: #FFFFFF"><i class="me-1 fa fa-shopping-basket"></i>Thêm vào giỏ hàng</button>
+									</form>
 								</div>
 							</div>
 						</div>
 						<div class="product-content">
-							<h3><a href="product-info.jsp">Rèm cuốn cửa sổ ấm cúng </a></h3>
+							<h3><a href="product-info.jsp?id=<%=product.getId()%>"> <%=product.getProductName()%></a></h3>
 							<div class="product-price">
-								<span class="old">120,000đ</span>
-								<span>100,000đ</span>
+								<%NumberFormat currentFormat = NumberFormat.getCurrencyInstance(java.util.Locale.forLanguageTag("vi-VN"));%>
+								<span class="old"><%=currentFormat.format(product.getProductPrice())%></span>
+								<span style="font-size: 22px; color: #f7941d;"><%=currentFormat.format(product.getProductPrice() - (product.getProductPrice() * product.getProductDiscount() / 100))%></span>
 							</div>
 						</div>
 					</div>
+					<% } %>
 					<!-- End Single Product -->
-					<!-- Start Single Product -->
-					<div class="single-product">
-						<div class="product-img">
-							<a href="product-info.jsp">
-								<img class="default-img" src="image/product-image/550x750.2.png" alt="#">
-								<img class="hover-img" src="image/product-image/550x750.2.png" alt="#">
-							</a>
-							<div class="button-head">
-								<div class="product-action">
-									<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-									<a></a>
-								</div>
-								<div class="product-action-2">
-									<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-								</div>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3><a href="product-info.jsp">Màn cuốn vải sọc chống nắng</a></h3>
-							<div class="product-price">
-								<span>110,000đ</span>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Product -->
-					<!-- Start Single Product -->
-					<div class="single-product">
-						<div class="product-img">
-							<a href="product-info.jsp">
-								<img class="default-img" src="image/product-image/550x750.3.png" alt="#">
-								<img class="hover-img" src="image/product-image/550x750.3.png" alt="#">
-								<span class="new">Mới</span>
-							</a>
-							<div class="button-head">
-								<div class="product-action">
-									<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-									<a></a>
-								</div>
-								<div class="product-action-2">
-									<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-								</div>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3><a href="product-info.jsp">Mành cuốn vải hoa văn lá cây</a></h3>
-							<div class="product-price">
-								<span>285,000đ</span>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Product -->
-					<!-- Start Single Product -->
-					<div class="single-product">
-						<div class="product-img">
-							<a href="product-info.jsp">
-								<img class="default-img" src="image/product-image/550x750.4.png" alt="#">
-								<img class="hover-img" src="image/product-image/550x750.4.png" alt="#">
-							</a>
-							<div class="button-head">
-								<div class="product-action">
-									<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-									<a></a>
-								</div>
-								<div class="product-action-2">
-									<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-								</div>
-							</div>
-						</div>
-						<div class="product-content">
-							<h3><a href="product-info.jsp">Rèm cuốn lưới đẹp sang trọng</a></h3>
-							<div class="product-price">
-								<span>320,000đ</span>
-							</div>
-						</div>
-					</div>
-					<!-- End Single Product -->
+
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -382,214 +305,43 @@
 						<div class="tab-pane fade show active" id="man" role="tabpanel">
 							<div class="tab-single">
 								<div class="row">
+
+									<%List<Product> listBestSale = ProductService.getInstance().getAllProduct(); %>
+									<% for (Product product : listBestSale)  {%>
+
 									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 										<div class="single-product">
 											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.11.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.11.png" alt="#">
+												<a href="product-info.jsp?id=<%=product.getId()%>">
+													<img class="default-img" src="data/images/<%=GalleryService.getInstance().getOneImageByProductId(product.getId()).getImageName()%> " alt="#" width="550px" height="750px">
+													<img class="hover-img" src="data/images/<%=GalleryService.getInstance().getOneImageByProductId(product.getId()).getImageName()%>" alt="#" width="550px" height="750px">
+<%--													<span class="out-of-stock"></span>--%>
 												</a>
 												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
 													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
+														<form action="CartController?productId=<%=product.getId()%>&quantity=1&urlId=2" method="post" style="margin-top: 5px">
+															<button type="submit" class="btn btn-primary shadow-0" style="color: #FFFFFF"><i class="me-1 fa fa-shopping-basket"></i>Thêm vào giỏ hàng</button>
+														</form>
 													</div>
 												</div>
 											</div>
 											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm lá nhựa đơn giản hiện đại</a></h3>
+												<h3><a href="product-info.jsp?id=<%=product.getId()%>"><%= product.getProductName() %></a></h3>
 												<div class="product-price">
-													<span>200,000đ</span>
+													<%NumberFormat currentFormat = NumberFormat.getCurrencyInstance(java.util.Locale.forLanguageTag("vi-VN"));%>
+													<span class="old"> <%=currentFormat.format(product.getProductPrice())%> </span>
+													<span style="font-size: 22px; color: #f7941d;"> <%= currentFormat.format(product.getProductPrice() - (product.getProductPrice() * product.getProductDiscount() / 100))%> </span>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-										<div class="single-product">
-											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.12.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.12.png" alt="#">
-												</a>
-												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
-													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-													</div>
-												</div>
-											</div>
-											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm lá dọc phòng ngủ cao cấp</a></h3>
-												<div class="product-price">
-													<span>130,000đ</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-										<div class="single-product">
-											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.13.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.13.png" alt="#">
-												</a>
-												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
-													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-													</div>
-												</div>
-											</div>
-											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm nhựa vân gỗ chất liệu PVC</a></h3>
-												<div class="product-price">
-													<span>400,000đ</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-										<div class="single-product">
-											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.14.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.14.png" alt="#">
-													<span class="new">Mới</span>
-												</a>
-												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
-													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-													</div>
-												</div>
-											</div>
-											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm sáo nhôm ngang cao cấp TP.HCM</a></h3>
-												<div class="product-price">
-													<span>160,000đ</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-										<div class="single-product">
-											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.15.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.15.png" alt="#">
-												</a>
-												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
-													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-													</div>
-												</div>
-											</div>
-											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm Cầu Vồng All Plus – Behan</a></h3>
-												<div class="product-price">
-													<span>180,000đ</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-										<div class="single-product">
-											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.16.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.16.png" alt="#">
-													<span class="price-dec">-30%</span>
-												</a>
-												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
-													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-													</div>
-												</div>
-											</div>
-											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm cửa sợi kim tuyến màu vàng kem</a></h3>
-												<div class="product-price">
-													<span>520,000đ</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-										<div class="single-product">
-											<div class="product-img">
-												<a href="product-info.jsp">
-													<img class="default-img" src="image/product-image/550x750.17.png" alt="#">
-													<img class="hover-img" src="image/product-image/550x750.17.png" alt="#">
-												</a>
-												<div class="button-head">
-													<div class="product-action">
-														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>
-														<a></a>
-													</div>
-													<div class="product-action-2">
-														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>
-													</div>
-												</div>
-											</div>
-											<div class="product-content">
-												<h3><a href="product-info.jsp">Rèm phòng tắm Hàn Quốc</a></h3>
-												<div class="product-price">
-													<span>80,000đ</span>
-												</div>
-											</div>
-										</div>
-									</div>
-<%--									<%Product product = ProductService.getInstance().getById(15);%>--%>
-<%--									<div class="col-xl-3 col-lg-4 col-md-4 col-12">--%>
-<%--										<div class="single-product">--%>
-<%--											<div class="product-img">--%>
-<%--												<a href="product-info.jsp">--%>
-<%--													<img class="default-img" src="<%=GalleryService.getInstance().getOneImageByProductId(product.getId()).getImagePath()%>" alt="#" width="550px" height="750px">--%>
-<%--													<img class="hover-img" src="<%=GalleryService.getInstance().getOneImageByProductId(product.getId()).getImagePath()%>" alt="#" width="550px" height="750px">--%>
-<%--													<span class="out-of-stock">Hot</span>--%>
-<%--												</a>--%>
-<%--												<div class="button-head">--%>
-<%--		&lt;%&ndash;										<div class="product-action">&ndash;%&gt;--%>
-<%--		&lt;%&ndash;											<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu Thích</span></a>&ndash;%&gt;--%>
-<%--		&lt;%&ndash;											<a></a>&ndash;%&gt;--%>
-<%--		&lt;%&ndash;										</div>&ndash;%&gt;--%>
-<%--													<div class="product-action-2">--%>
-<%--														<a title="Thêm Vào Giỏ Hàng" href="#">Thêm Vào Giỏ Hàng</a>--%>
-<%--													</div>--%>
-<%--												</div>--%>
-<%--											</div>--%>
-<%--											<div class="product-content">--%>
-<%--												<h3><a href="product-info.jsp"><%= product.getProductName() %></a></h3>--%>
-<%--												<div class="product-price">--%>
-<%--													<span class="old"> <%= product.getProductPrice()%> </span>--%>
-<%--													<span> <%= product.getProductPrice() - (product.getProductPrice()) * product.getProductDiscount()%> </span>--%>
-<%--												</div>--%>
-<%--											</div>--%>
-<%--										</div>--%>
-<%--									</div>--%>
+
+									<% }%>
+
 								</div>
 							</div>
 						</div>
+
 						<!--/ End Single Tab -->
 
 					</div>

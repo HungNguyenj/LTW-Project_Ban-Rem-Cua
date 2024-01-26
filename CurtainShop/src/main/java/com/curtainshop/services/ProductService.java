@@ -3,7 +3,7 @@ package com.curtainshop.services;
 import com.curtainshop.beans.Product;
 import com.curtainshop.database.JDBIConnector;
 
-import java.util.List;
+import java.util.*;
 
 public class ProductService {
     private static ProductService instance;
@@ -67,6 +67,57 @@ public class ProductService {
         });
         return  product.getId();
     }
+
+    public List<Product> getListProductByName(String name) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM products WHERE productName LIKE :productName")
+                    .bind("productName","%" + name + "%")
+                    .mapToBean(Product.class)
+                    .list();
+        });
+    }
+    public List<Product> getListProductByType(String type) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM products WHERE type LIKE :type")
+                    .bind("type","%" + type + "%")
+                    .mapToBean(Product.class)
+                    .list();
+        });
+    }
+    public List<Product> getListProductByOrigin(String origin) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM products WHERE origin LIKE :origin")
+                    .bind("origin","%" + origin + "%")
+                    .mapToBean(Product.class)
+                    .list();
+        });
+    }
+
+    public List<Product> searchProductByText(String text) {
+        List<Product> result = new ArrayList<>();
+        List<Product> check = new ArrayList<>();
+        StringTokenizer tokenizer = new StringTokenizer(text);
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken().trim();
+            List<Product> list1 = ProductService.getInstance().getListProductByName(token);
+            List<Product> list2 = ProductService.getInstance().getListProductByType(token);
+            List<Product> list3 = ProductService.getInstance().getListProductByOrigin(token);
+            check.addAll(list1);
+            check.addAll(list2);
+            check.addAll(list3);
+        }
+        for (int i = 0; i < check.size(); i++) {
+            for (int j = i + 1; j < check.size(); j++) {
+                if (check.get(i).getId() == check.get(j).getId()) {
+                    check.remove(j);
+                }
+            }
+        }
+        result.addAll(check);
+        return result;
+    }
+
+
 
     public static void main(String[] args) {
         System.out.println(ProductService.getInstance().getLastProductId());

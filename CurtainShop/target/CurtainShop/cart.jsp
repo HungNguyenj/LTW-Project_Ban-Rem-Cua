@@ -1,3 +1,9 @@
+<%@ page import="com.curtainshop.beans.User" %>
+<%@ page import="com.curtainshop.carts.Carts" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.curtainshop.carts.CartsProduct" %>
+<%@ page import="com.curtainshop.beans.Product" %>
+<%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,8 +67,14 @@
 							<!-- Top Right -->
 							<div class="right-content">
 								<ul class="list-main">
+									<%
+										HttpSession session1 = request.getSession();
+										User user = (User) session.getAttribute("account");
+										String test = (user == null) ? "Đăng Nhập" : user.getUserName();
+									%>
+
 									<li><i class="ti-user"></i> <a href="user.jsp">Tài khoản</a></li>
-									<li><i class="ti-power-off"></i><a href="login.jsp">Đăng Nhập</a></li>
+									<li><i class="ti-power-off"></i><a href="login.jsp"><%=test%></a></li>
 								</ul>
 							</div>
 							<!-- End Top Right -->
@@ -98,20 +110,9 @@
 						<div class="col-lg-8 col-md-7 col-12">
 							<div class="search-bar-top">
 								<div class="search-bar">
-<%--									<select>--%>
-<%--										<option selected="selected" >Danh Mục</option>--%>
-<%--										<option>Rèm Vải</option>--%>
-<%--										<option>Rèm Cuốn</option>--%>
-<%--										<option>Rèm Sáo Gỗ</option>--%>
-<%--										<option>Rèm Kiểu Âu</option>--%>
-<%--										<option>Rèm Tre/Trúc</option>--%>
-<%--										<option>Rèm Phòng Tắm</option>--%>
-<%--										<option>Rèm Sợi</option>--%>
-<%--										<option>Rèm Roman</option>--%>
-<%--									</select>--%>
-									<form>
-										<input name="search" placeholder="Tìm kiếm ở đây....." type="search">
-										<button class="btnn"><i class="ti-search"></i></button>
+									<form action="searchController" method="get">
+										<input name="search" placeholder="Tìm kiếm ở đây....." type="search" style="width: 480px">
+										<button class="btnn" type="submit"><i class="ti-search"></i></button>
 									</form>
 								</div>
 							</div>
@@ -124,35 +125,6 @@
 								</div>
 								<div class="sinlge-bar shopping">
 									<a href="cart.jsp" class="single-icon"><i class="ti-bag"></i></a>
-									<!-- Shopping Item -->
-									<!--							<div class="shopping-item">-->
-									<!--								<div class="dropdown-cart-header">-->
-									<!--									<span>2 Items</span>-->
-									<!--									<a href="#">View Cart</a>-->
-									<!--								</div>-->
-									<!--								<ul class="shopping-list">-->
-									<!--									<li>-->
-									<!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-									<!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-									<!--										<h4><a href="#">Woman Ring</a></h4>-->
-									<!--										<p class="quantity">1x - <span class="amount">$99.00</span></p>-->
-									<!--									</li>-->
-									<!--									<li>-->
-									<!--										<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>-->
-									<!--										<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>-->
-									<!--										<h4><a href="#">Woman Necklace</a></h4>-->
-									<!--										<p class="quantity">1x - <span class="amount">$35.00</span></p>-->
-									<!--									</li>-->
-									<!--								</ul>-->
-									<!--								<div class="bottom">-->
-									<!--									<div class="total">-->
-									<!--										<span>Total</span>-->
-									<!--										<span class="total-amount">$134.00</span>-->
-									<!--									</div>-->
-									<!--									<a href="checkout.jsp" class="btn animate">Checkout</a>-->
-									<!--								</div>-->
-									<!--							</div>-->
-									<!--/ End Shopping Item -->
 								</div>
 							</div>
 						</div>
@@ -231,92 +203,80 @@
 						<thead>
 							<tr class="main-hading">
 								<th>Sản Phẩm</th>
-								<th>Tên</th>
 								<th class="text-center">Giá</th>
+								<th class="text-center">Chiều rộng (cm)</th>
+								<th class="text-center">Chiều cao (cm)</th>
 								<th class="text-center">Số Lượng</th>
 								<th class="text-center">TOTAL</th> 
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
+
+						<%
+							Carts cart = (Carts) session.getAttribute("cart");
+							if (cart == null) {
+								cart = new Carts();
+							}
+							Map<Integer, CartsProduct> cartItems = cart.getListData();
+						%>
+						<%
+							if (cartItems.isEmpty()) {
+						%>
+
+						<%
+							} else {
+						%>
+						<%
+							for (Map.Entry<Integer, CartsProduct> entry : cartItems.entrySet()) {
+								CartsProduct cartsProduct = entry.getValue();
+								Product product = cartsProduct.getProduct();
+
+						%>
+
 						<tbody>
+						<%NumberFormat currentFormat = NumberFormat.getCurrencyInstance(java.util.Locale.forLanguageTag("vi-VN"));%>
 							<tr>
-								<td class="image" data-title="No"><img src="image/product-image/100x100.1.png" alt="#"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">Rèm cửa chống nắng</a></p>
-									<p class="product-des">Những mẫu rèm 2 lớp đẹp nhất 2023</p>
+									<p class="product-name"><a href="product-info.jsp?id=<%=product.getId()%>"><%=product.getProductName()%></a></p>
 								</td>
-								<td class="price" data-title="Price"><span>100,000đ </span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
+								<td class="price" data-title="Price"><span><%=currentFormat.format(product.getProductPrice())%></span></td>
+								<td>
+									 <div>
+										 <input type="number" name="productWidth" placeholder="Chiều rộng" style="width: 100px">
+									 </div>
+								</td>
+								<td>
+									<div >
+										<input type="number" name="productHeight"placeholder="Chiều cao" style="width: 100px">
+									</div>
+								</td>
+								<td class="qty" data-title="Qty">
+									<!-- Input Order -->
 									<div class="input-group">
 										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[<%=product.getId()%>]">
 												<i class="ti-minus"></i>
 											</button>
 										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
+										<input type="text" name="quant[<%=product.getId()%>]" class="input-number"  data-min="1" data-max="<%=product.getQuantity()%>" value="<%=cartsProduct.getQuantity()%>">
 										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-												<i class="ti-plus"></i>
-											</button>
+											<form action="CartController?productId=<%=product.getId()%>&quantity=1" method="post">
+												<button type="submit" class="btn btn-primary btn-number" data-type="plus" data-field="quant[<%=product.getId()%>]">
+													<i class="ti-plus"></i>
+												</button>
+											</form>
 										</div>
 									</div>
 									<!--/ End Input Order -->
 								</td>
-								<td class="total-amount" data-title="Total"><span>100,000đ</span></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+								<td class="total-amount" data-title="Total"><span><%=currentFormat.format(product.getProductPrice() * cartsProduct.getQuantity())%></span></td>
+								<td class="action" data-title="Remove"><a href="RemoveCartController?productId=<%=product.getId()%>"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
-							<tr>
-								<td class="image" data-title="No"><img src="image/product-image/100x100.2.png" alt="#"></td>
-								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">Rèm bệnh viện, y tế</a></p>
-									<p class="product-des">Rèm ngăn phòng y tế che giường cho bệnh nhân</p>
-								</td>
-								<td class="price" data-title="Price"><span>300,000đ </span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
-									<div class="input-group">
-										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
-												<i class="ti-minus"></i>
-											</button>
-										</div>
-										<input type="text" name="quant[2]" class="input-number"  data-min="1" data-max="100" value="2">
-										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[2]">
-												<i class="ti-plus"></i>
-											</button>
-										</div>
-									</div>
-									<!--/ End Input Order -->
-								</td>
-								<td class="total-amount" data-title="Total"><span>300,000đ</span></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-							</tr>
-							<tr>
-								<td class="image" data-title="No"><img src="image/product-image/100x100.3.png" alt="#"></td>
-								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">Rèm vải</a></p>
-									<p class="product-des">Rèm vải phối màu đơn giản hiện đại cho phòng ngủ</p>
-								</td>
-								<td class="price" data-title="Price"><span>220,000đ </span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
-									<div class="input-group">
-										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[3]">
-												<i class="ti-minus"></i>
-											</button>
-										</div>
-										<input type="text" name="quant[3]" class="input-number"  data-min="1" data-max="100" value="3">
-										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[3]">
-												<i class="ti-plus"></i>
-											</button>
-										</div>
-									</div>
-									<!--/ End Input Order -->
-								</td>
-								<td class="total-amount" data-title="Total"><span>660,000đ</span></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
-							</tr>
+
+							<%		}
+							}%>
+
+
 						</tbody>
 					</table>
 					<!--/ End Shopping Summery -->
@@ -329,28 +289,20 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-5 col-12">
 								<div class="left">
-									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Mã giảm giá">
-											<button class="btn">Áp dụng</button>
-										</form>
-									</div>
-<!--									<div class="checkbox">-->
-<!--										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>-->
-<!--									</div>-->
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
+
 									<ul>
-										<li>Tổng giá giỏ hàng<span>1,060,000đ</span></li>
-										<li>Phí vận chuyển<span>0đ</span></li>
-										<li>Mã giảm giá<span>-60,000đ</span></li>
-										<li class="last">Tổng<span>1,000,000đ</span></li>
+										<%NumberFormat currentFormat1 = NumberFormat.getCurrencyInstance(java.util.Locale.forLanguageTag("vi-VN"));%>
+
+										<li>Tổng giá giỏ hàng<span><%=currentFormat1.format(cart.getTotalPrice())%>></span></li>
+										<li>Phí vận chuyển<span><%=currentFormat1.format(cart.getTotalPrice() * 0.05)%></span></li>
+										<li class="last">Tổng<span><%=currentFormat1.format(cart.getTotalPrice()-(cart.getTotalPrice() * 0.05))%></span></li>
 									</ul>
 									<div class="button5">
 										<a href="checkout.jsp" class="btn">Thanh Toán</a>
-										<a href="shop-grid.jsp" class="btn">Tiếp tục mua hàng</a>
 									</div>
 								</div>
 							</div>
@@ -362,11 +314,6 @@
 		</div>
 	</div>
 	<!--/ End Shopping Cart -->
-			
-	<!-- Start Shop Services Area  -->
-	<!-- End Shop Newsletter -->
-
-	
 	<!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->
@@ -444,9 +391,6 @@
 				<div class="inner">
 					<div class="row">
 						<div class="col-lg-6 col-12" style="margin-left: 380px">
-							<div class="left">
-								<p>Copyright © 2023 <a href="#" target="_blank">Curtainshop</a>  -  Đã đăng kí bản quyền.</p>
-							</div>
 						</div>
 					</div>
 				</div>
